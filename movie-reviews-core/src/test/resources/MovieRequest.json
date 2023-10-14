@@ -1,0 +1,17 @@
+{
+	"movieName": "Ciao Pippo",
+	"movieCode": "aaaaaaaaaa",
+	"originalName": "Ciao Pippo original",
+	"duration": 120,
+	"regia": "Regia 1",
+	"sceneggiatura": "Sceneggiatura 1",
+	"star": "Stat1, Star 2",
+	"movieCast": "Attore 1, Attore 2",
+	"movieYear": 2002,
+	"plot": "E'un film bello",
+	"rating": 10,
+	"numRatings": 100000,
+	"numFavourites": 30000,
+	"metascore": 99,
+	"currentPosition" : 5
+}
