@@ -2,7 +2,6 @@ package com.luca.moviereviews.core.service.impl;
 
 import java.util.List;
 import java.util.Optional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -21,8 +20,13 @@ import com.luca.moviereviews.responses.MovieSearchResponse;
 @Service
 public class MovieServiceImpl implements MovieService {
 
-	@Autowired
+	
 	private MovieRepository movieRepository;
+	
+	
+	public MovieServiceImpl(MovieRepository movieRepository) {
+		this.movieRepository=movieRepository;
+	}
 
 	@Override
 	@Transactional

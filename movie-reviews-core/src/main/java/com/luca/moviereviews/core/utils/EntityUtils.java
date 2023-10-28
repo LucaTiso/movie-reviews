@@ -108,6 +108,10 @@ public class EntityUtils {
 		reviewResponse.setReviewTime(webappReview.getReviewTime());
 		reviewResponse.setText(webappReview.getText());
 		reviewResponse.setTitle(webappReview.getTitle());
+		reviewResponse.setRating(webappReview.getRating());
+		
+		reviewResponse.setReviewerUsername(webappReview.getWebappUser().getUsername());
+		reviewResponse.setReviewerId(webappReview.getWebappUser().getId());
 
 		return reviewResponse;
 	}

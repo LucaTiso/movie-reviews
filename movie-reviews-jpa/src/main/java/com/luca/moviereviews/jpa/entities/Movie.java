@@ -10,64 +10,63 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 
 @Entity
 public class Movie implements Serializable {
-	
 
 	private static final long serialVersionUID = -699356038420699653L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE,
-		    generator = "MOVIE_SEQ")
-	@SequenceGenerator(name = "MOVIE_SEQ",sequenceName="MOVIE_SEQ",
-		    allocationSize = 5)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "MOVIE_SEQ")
+	@SequenceGenerator(name = "MOVIE_SEQ", sequenceName = "MOVIE_SEQ", allocationSize = 5)
 	private Long id;
-	
+
 	private String movieCode;
-	
+
 	private String movieName;
-	
+
 	private String originalName;
-	
+
 	private Integer duration;
-	
+
 	private String regia;
-	
+
 	private String sceneggiatura;
-	
+
 	private String star;
-	
+
 	private String movieCast;
-	
+
 	private Integer movieYear;
-	
+
 	private String plot;
-	
+
 	private Float rating;
-	
+
 	private Long numRatings;
-	
+
 	private Long numFavourites;
-	
+
 	private Integer metascore;
-	
+
 	private Integer currentPosition;
-	
-	@OneToMany(targetEntity=WebappReview.class,cascade=CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="movie")
-	private List<WebappReview> webappReviews =new ArrayList<>();
-	
-	
-	@OneToMany(targetEntity=ImdbReview.class,cascade=CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="movie")
-	private List<ImdbReview> imdbReviews =new ArrayList<>();
-	
+
+	@OneToMany(targetEntity = WebappReview.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "movie")
+	private List<WebappReview> webappReviews = new ArrayList<>();
+
+	@OneToMany(targetEntity = ImdbReview.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "movie")
+	private List<ImdbReview> imdbReviews = new ArrayList<>();
+
+	/*@ManyToMany(mappedBy = "favouriteList",fetch = FetchType.LAZY)
+	private List<WebappUser> users=new ArrayList<>();*/
+
 	public Long getId() {
 		return id;
 	}
 
-	
 	public String getOriginalName() {
 		return originalName;
 	}
@@ -107,7 +106,6 @@ public class Movie implements Serializable {
 	public void setStar(String star) {
 		this.star = star;
 	}
-
 
 	public String getPlot() {
 		return plot;
@@ -157,67 +155,61 @@ public class Movie implements Serializable {
 		this.currentPosition = currentPosition;
 	}
 
-
 	public String getMovieName() {
 		return movieName;
 	}
-
 
 	public void setMovieName(String movieName) {
 		this.movieName = movieName;
 	}
 
-
 	public String getMovieCast() {
 		return movieCast;
 	}
-
 
 	public void setMovieCast(String movieCast) {
 		this.movieCast = movieCast;
 	}
 
-
 	public Integer getMovieYear() {
 		return movieYear;
 	}
-
 
 	public void setMovieYear(Integer movieYear) {
 		this.movieYear = movieYear;
 	}
 
-
 	public List<WebappReview> getWebappReviews() {
 		return webappReviews;
 	}
-
 
 	public void setWebappReviews(List<WebappReview> webappReviews) {
 		this.webappReviews = webappReviews;
 	}
 
-
 	public String getMovieCode() {
 		return movieCode;
 	}
-
 
 	public void setMovieCode(String movieCode) {
 		this.movieCode = movieCode;
 	}
 
-
 	public List<ImdbReview> getImdbReviews() {
 		return imdbReviews;
 	}
 
-
 	public void setImdbReviews(List<ImdbReview> imdbReviews) {
 		this.imdbReviews = imdbReviews;
 	}
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return "Movie [id=" + id + ", movieCode=" + movieCode + ", movieName=" + movieName + ", originalName="
+				+ originalName + ", duration=" + duration + ", regia=" + regia + ", sceneggiatura=" + sceneggiatura
+				+ ", star=" + star + ", movieCast=" + movieCast + ", movieYear=" + movieYear + ", plot=" + plot
+				+ ", rating=" + rating + ", numRatings=" + numRatings + ", numFavourites=" + numFavourites
+				+ ", metascore=" + metascore + ", currentPosition=" + currentPosition + "]";
+	}
 
 }
