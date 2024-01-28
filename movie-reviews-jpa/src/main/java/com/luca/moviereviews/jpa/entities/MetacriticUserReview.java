@@ -23,7 +23,7 @@ public class MetacriticUserReview {
 	@SequenceGenerator(name = "IMDB_REVIEW_SEQ", sequenceName = "IMDB_REVIEW_SEQ", allocationSize = 1)
 	private Long id;
 	
-	
+	//
 	@Column(name="movie_id")
 	private Long movieId;
 
