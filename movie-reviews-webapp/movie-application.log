@@ -1,28 +1,32 @@
-2023-10-07_19:53:52.896 [restartedMain] INFO  c.l.m.webapp.MovieReviewsApplication - Starting MovieReviewsApplication using Java 17 with PID 30844 (C:\Users\Luca\movie_reviews_05082023\movie-reviews\movie-reviews-webapp\target\classes started by Luca in C:\Users\Luca\movie_reviews_05082023\movie-reviews\movie-reviews-webapp)
-2023-10-07_19:53:52.896 [restartedMain] INFO  c.l.m.webapp.MovieReviewsApplication - No active profile set, falling back to 1 default profile: "default"
-2023-10-07_19:53:53.248 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-10-07_19:53:53.270 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 20 ms. Found 3 JPA repository interfaces.
-2023-10-07_19:53:53.452 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
-2023-10-07_19:53:53.454 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-2023-10-07_19:53:53.455 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2023-10-07_19:53:53.455 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.11]
-2023-10-07_19:53:53.490 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2023-10-07_19:53:53.492 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 586 ms
-2023-10-07_19:53:53.512 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-10-07_19:53:53.542 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
-2023-10-07_19:53:53.543 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-10-07_19:53:54.317 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
-2023-10-07_19:53:54.485 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-10-07_19:53:54.772 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-10-07_19:53:54.911 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-10-07_19:53:55.000 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
-2023-10-07_19:53:55.009 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
-2023-10-07_19:53:55.014 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
-2023-10-07_19:53:55.018 [restartedMain] INFO  c.l.m.webapp.MovieReviewsApplication - Started MovieReviewsApplication in 2.171 seconds (process running for 1231.161)
-2023-10-07_19:53:55.020 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
-2023-10-07_19:54:00.184 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-10-07_19:54:00.184 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2023-10-07_19:54:00.185 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
-2023-10-07_19:54:00.496 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select w1_0.id,w1_0.country,w1_0.email,w1_0.lastUpdateTime,w1_0.password,w1_0.registrationTime,w1_0.username from WebappUser w1_0 where w1_0.username=?
-2023-10-07_19:54:00.501 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select nextval('WEBAPP_REVIEW_SEQ')
-2023-10-07_19:54:00.503 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - insert into WebappReview (movie_id,rating,reviewDate,reviewTime,text,title,webapp_user_id,id) values (?,?,?,?,?,?,?,?)
+2023-10-22_22:34:25.260 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2023-10-22_22:34:25.382 [restartedMain] INFO  c.l.m.webapp.MovieReviewsApplication - Starting MovieReviewsApplication using Java 17 with PID 23940 (C:\Users\Luca\movie_reviews_05082023\movie-reviews\movie-reviews-webapp\target\classes started by Luca in C:\Users\Luca\movie_reviews_05082023\movie-reviews\movie-reviews-webapp)
+2023-10-22_22:34:25.389 [restartedMain] INFO  c.l.m.webapp.MovieReviewsApplication - No active profile set, falling back to 1 default profile: "default"
+2023-10-22_22:34:25.517 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-10-22_22:34:25.520 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-10-22_22:34:26.836 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-10-22_22:34:26.972 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 118 ms. Found 5 JPA repository interfaces.
+2023-10-22_22:34:28.758 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2023-10-22_22:34:28.779 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2023-10-22_22:34:28.788 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2023-10-22_22:34:28.790 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.11]
+2023-10-22_22:34:28.941 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-10-22_22:34:28.948 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3416 ms
+2023-10-22_22:34:29.077 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2023-10-22_22:34:29.797 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@42184016
+2023-10-22_22:34:29.803 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2023-10-22_22:34:29.923 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-10-22_22:34:30.147 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.6.Final
+2023-10-22_22:34:30.158 [restartedMain] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2023-10-22_22:34:30.656 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2023-10-22_22:34:31.054 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-10-22_22:34:31.898 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2023-10-22_22:34:32.188 [restartedMain] WARN  org.hibernate.mapping.RootClass - HHH000038: Composite-id class does not override equals(): com.luca.moviereviews.jpa.entities.FavouritesMappingId
+2023-10-22_22:34:32.189 [restartedMain] WARN  org.hibernate.mapping.RootClass - HHH000039: Composite-id class does not override hashCode(): com.luca.moviereviews.jpa.entities.FavouritesMappingId
+2023-10-22_22:34:33.511 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-10-22_22:34:33.571 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-10-22_22:34:34.328 [restartedMain] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2023-10-22_22:34:35.475 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-10-22_22:34:36.261 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2023-10-22_22:34:36.284 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2023-10-22_22:34:36.326 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2023-10-22_22:34:36.347 [restartedMain] INFO  c.l.m.webapp.MovieReviewsApplication - Started MovieReviewsApplication in 11.701 seconds (process running for 12.947)

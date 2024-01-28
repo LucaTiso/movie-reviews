@@ -43,7 +43,7 @@ public class JpaConfig {
 		
 		config.setJdbcUrl("jdbc:postgresql://localhost:5432/movie_reviews");
 		config.setUsername("tiso");
-		config.setPassword("Shambhala2014");
+		config.setPassword("password");
 		config.setDriverClassName("org.postgresql.Driver");
 		
 

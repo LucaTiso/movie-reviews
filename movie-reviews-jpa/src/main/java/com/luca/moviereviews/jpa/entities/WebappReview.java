@@ -21,12 +21,12 @@ public class WebappReview {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "WEBAPP_REVIEW_SEQ")
 	@SequenceGenerator(name = "WEBAPP_REVIEW_SEQ", sequenceName = "WEBAPP_REVIEW_SEQ", allocationSize = 5)
 	private Long id;
-	
-	private String title;
-	
+		
 	private String text;
 	
-	private Integer rating;
+	private int rating;
+	
+	private String username;
 	
 	private LocalDate reviewDate;
 	
@@ -51,13 +51,6 @@ public class WebappReview {
 		this.id = id;
 	}
 
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
 
 	public String getText() {
 		return text;
@@ -67,11 +60,11 @@ public class WebappReview {
 		this.text = text;
 	}
 
-	public Integer getRating() {
+	public int getRating() {
 		return rating;
 	}
 
-	public void setRating(Integer rating) {
+	public void setRating(int rating) {
 		this.rating = rating;
 	}
 
@@ -113,6 +106,14 @@ public class WebappReview {
 
 	public void setMovieId(Long movieId) {
 		this.movieId = movieId;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	
 }

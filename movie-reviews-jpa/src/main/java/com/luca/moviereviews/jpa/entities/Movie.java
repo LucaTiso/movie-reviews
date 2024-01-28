@@ -10,23 +10,25 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name="MOVIE_NEW")
 public class Movie implements Serializable {
 
 	private static final long serialVersionUID = -699356038420699653L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "MOVIE_SEQ")
-	@SequenceGenerator(name = "MOVIE_SEQ", sequenceName = "MOVIE_SEQ", allocationSize = 5)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "MOVIE_NEW_SEQ")
+	@SequenceGenerator(name = "MOVIE_NEW_SEQ", sequenceName = "MOVIE_NEW_SEQ", allocationSize = 1)
 	private Long id;
 
-	private String movieCode;
+	private String href;
 
-	private String movieName;
+	private String title;
 
 	private String originalName;
 
@@ -34,31 +36,33 @@ public class Movie implements Serializable {
 
 	private String regia;
 
-	private String sceneggiatura;
+	private String production;
 
 	private String star;
 
-	private String movieCast;
+	private String cast;
 
-	private Integer movieYear;
+	private Integer year;
+	
+	private String genre;
 
 	private String plot;
 
-	private Float rating;
+	private Float userRating;
 
-	private Long numRatings;
-
-	private Long numFavourites;
+	private int userNumRatings;
 
 	private Integer metascore;
-
-	private Integer currentPosition;
+	
+	private int metascoreNumRatings;
+	
+	private String movieRatingCategory;
 
 	@OneToMany(targetEntity = WebappReview.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "movie")
 	private List<WebappReview> webappReviews = new ArrayList<>();
 
-	@OneToMany(targetEntity = ImdbReview.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "movie")
-	private List<ImdbReview> imdbReviews = new ArrayList<>();
+	@OneToMany(targetEntity = MetacriticUserReview.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "movie")
+	private List<MetacriticUserReview> imdbReviews = new ArrayList<>();
 
 	/*@ManyToMany(mappedBy = "favouriteList",fetch = FetchType.LAZY)
 	private List<WebappUser> users=new ArrayList<>();*/
@@ -91,14 +95,7 @@ public class Movie implements Serializable {
 		this.regia = regia;
 	}
 
-	public String getSceneggiatura() {
-		return sceneggiatura;
-	}
-
-	public void setSceneggiatura(String sceneggiatura) {
-		this.sceneggiatura = sceneggiatura;
-	}
-
+	
 	public String getStar() {
 		return star;
 	}
@@ -115,29 +112,6 @@ public class Movie implements Serializable {
 		this.plot = plot;
 	}
 
-	public Float getRating() {
-		return rating;
-	}
-
-	public void setRating(Float rating) {
-		this.rating = rating;
-	}
-
-	public Long getNumRatings() {
-		return numRatings;
-	}
-
-	public void setNumRatings(Long numRatings) {
-		this.numRatings = numRatings;
-	}
-
-	public Long getNumFavourites() {
-		return numFavourites;
-	}
-
-	public void setNumFavourites(Long numFavourites) {
-		this.numFavourites = numFavourites;
-	}
 
 	public Integer getMetascore() {
 		return metascore;
@@ -147,38 +121,7 @@ public class Movie implements Serializable {
 		this.metascore = metascore;
 	}
 
-	public Integer getCurrentPosition() {
-		return currentPosition;
-	}
-
-	public void setCurrentPosition(Integer currentPosition) {
-		this.currentPosition = currentPosition;
-	}
-
-	public String getMovieName() {
-		return movieName;
-	}
-
-	public void setMovieName(String movieName) {
-		this.movieName = movieName;
-	}
-
-	public String getMovieCast() {
-		return movieCast;
-	}
-
-	public void setMovieCast(String movieCast) {
-		this.movieCast = movieCast;
-	}
-
-	public Integer getMovieYear() {
-		return movieYear;
-	}
-
-	public void setMovieYear(Integer movieYear) {
-		this.movieYear = movieYear;
-	}
-
+	
 	public List<WebappReview> getWebappReviews() {
 		return webappReviews;
 	}
@@ -187,29 +130,97 @@ public class Movie implements Serializable {
 		this.webappReviews = webappReviews;
 	}
 
-	public String getMovieCode() {
-		return movieCode;
-	}
 
-	public void setMovieCode(String movieCode) {
-		this.movieCode = movieCode;
-	}
-
-	public List<ImdbReview> getImdbReviews() {
+	public List<MetacriticUserReview> getImdbReviews() {
 		return imdbReviews;
 	}
 
-	public void setImdbReviews(List<ImdbReview> imdbReviews) {
+	public void setImdbReviews(List<MetacriticUserReview> imdbReviews) {
 		this.imdbReviews = imdbReviews;
 	}
 
-	@Override
-	public String toString() {
-		return "Movie [id=" + id + ", movieCode=" + movieCode + ", movieName=" + movieName + ", originalName="
-				+ originalName + ", duration=" + duration + ", regia=" + regia + ", sceneggiatura=" + sceneggiatura
-				+ ", star=" + star + ", movieCast=" + movieCast + ", movieYear=" + movieYear + ", plot=" + plot
-				+ ", rating=" + rating + ", numRatings=" + numRatings + ", numFavourites=" + numFavourites
-				+ ", metascore=" + metascore + ", currentPosition=" + currentPosition + "]";
+	public String getHref() {
+		return href;
+	}
+
+	public void setHref(String href) {
+		this.href = href;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getProduction() {
+		return production;
+	}
+
+	public void setProduction(String production) {
+		this.production = production;
+	}
+
+	public String getCast() {
+		return cast;
+	}
+
+	public void setCast(String cast) {
+		this.cast = cast;
+	}
+
+	public Integer getYear() {
+		return year;
+	}
+
+	public void setYear(Integer year) {
+		this.year = year;
+	}
+
+	public String getGenre() {
+		return genre;
+	}
+
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
+
+	public Float getUserRating() {
+		return userRating;
+	}
+
+	public void setUserRating(Float userRating) {
+		this.userRating = userRating;
+	}
+
+	public int getUserNumRatings() {
+		return userNumRatings;
+	}
+
+	public void setUserNumRatings(int userNumRatings) {
+		this.userNumRatings = userNumRatings;
+	}
+
+	public int getMetascoreNumRatings() {
+		return metascoreNumRatings;
+	}
+
+	public void setMetascoreNumRatings(int metascoreNumRatings) {
+		this.metascoreNumRatings = metascoreNumRatings;
+	}
+
+	public String getMovieRatingCategory() {
+		return movieRatingCategory;
+	}
+
+	public void setMovieRatingCategory(String movieRatingCategory) {
+		this.movieRatingCategory = movieRatingCategory;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 }

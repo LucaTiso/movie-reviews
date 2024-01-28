@@ -17,15 +17,15 @@ public class ImdbUser {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "IMDB_USER_SEQ")
-	@SequenceGenerator(name = "IMDB_USER_SEQ", sequenceName = "IMDB_USER_SEQ", allocationSize = 5)
+	@SequenceGenerator(name = "IMDB_USER_SEQ", sequenceName = "IMDB_USER_SEQ", allocationSize = 1)
 	private Long id;
 
 	private String userCode;
 
 	private String username;
 
-	@OneToMany(targetEntity = ImdbReview.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "imdbUser")
-	private List<ImdbReview> imdbReviews = new ArrayList<>();
+	@OneToMany(targetEntity = MetacriticUserReview.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "imdbUser")
+	private List<MetacriticUserReview> imdbReviews = new ArrayList<>();
 
 	public Long getId() {
 		return id;
@@ -47,11 +47,11 @@ public class ImdbUser {
 		this.username = username;
 	}
 
-	public List<ImdbReview> getImdbReviews() {
+	public List<MetacriticUserReview> getImdbReviews() {
 		return imdbReviews;
 	}
 
-	public void setImdbReviews(List<ImdbReview> imdbReviews) {
+	public void setImdbReviews(List<MetacriticUserReview> imdbReviews) {
 		this.imdbReviews = imdbReviews;
 	}
 

@@ -3,6 +3,7 @@ package com.luca.moviereviews.jpa.entities;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -11,24 +12,31 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
 
 @Entity
-public class ImdbReview {
+@Table(name="METACRITIC_USER_REVIEW")
+public class MetacriticUserReview {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "IMDB_REVIEW_SEQ")
-	@SequenceGenerator(name = "IMDB_REVIEW_SEQ", sequenceName = "IMDB_REVIEW_SEQ", allocationSize = 5)
+	@SequenceGenerator(name = "IMDB_REVIEW_SEQ", sequenceName = "IMDB_REVIEW_SEQ", allocationSize = 1)
 	private Long id;
-
-	private String title;
+	
+	
+	@Column(name="movie_id")
+	private Long movieId;
 
 	private String text;
 
-	private Integer rating;
+	private int rating;
 
 	private LocalDate reviewDate;
+	
+	@ManyToOne(targetEntity = Movie.class, fetch = FetchType.LAZY)
+	@JoinColumn(name="movie_id",referencedColumnName="id",insertable=false,updatable=false,nullable=false)
+	private Movie movie;
 
-	private LocalDateTime reviewTime;
 
 	public Long getId() {
 		return id;
@@ -90,12 +98,5 @@ public class ImdbReview {
 		this.movie = movie;
 	}
 
-	@ManyToOne(targetEntity = ImdbUser.class, fetch = FetchType.EAGER)
-	@JoinColumn(name = "imdb_user_id", referencedColumnName = "id", nullable = false)
-	private ImdbUser imdbUser;
-
-	@ManyToOne(targetEntity = Movie.class, fetch = FetchType.LAZY)
-	@JoinColumn(name = "movie_id", referencedColumnName = "id", insertable = false, updatable = false, nullable = false)
-	private Movie movie;
 
 }
