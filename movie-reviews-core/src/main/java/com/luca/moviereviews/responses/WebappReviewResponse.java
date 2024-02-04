@@ -1,11 +1,13 @@
-package com.luca.moviereviews.core.requests;
+package com.luca.moviereviews.responses;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class ImdbReviewRequest {
+public class WebappReviewResponse {
 
-	private String title;
+	private Long id;
+
+	private String username;
 
 	private String text;
 
@@ -14,15 +16,20 @@ public class ImdbReviewRequest {
 	private LocalDate reviewDate;
 
 	private LocalDateTime reviewTime;
+	
+	private String reviewerUsername;
+	
+	private Long reviewerId;
 
-	public String getTitle() {
-		return title;
+	public Long getId() {
+		return id;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
+	
 	public String getText() {
 		return text;
 	}
@@ -55,4 +62,29 @@ public class ImdbReviewRequest {
 		this.reviewTime = reviewTime;
 	}
 
+	public String getReviewerUsername() {
+		return reviewerUsername;
+	}
+
+	public void setReviewerUsername(String reviewerUsername) {
+		this.reviewerUsername = reviewerUsername;
+	}
+
+	public Long getReviewerId() {
+		return reviewerId;
+	}
+
+	public void setReviewerId(Long reviewerId) {
+		this.reviewerId = reviewerId;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
+	
 }

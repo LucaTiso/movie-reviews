@@ -4,24 +4,23 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.luca.moviereviews.core.model.ReviewSearchParams;
-import com.luca.moviereviews.core.requests.ImdbReviewRequest;
-
+import com.luca.moviereviews.core.requests.MetacriticReviewRequest;
 import com.luca.moviereviews.core.service.ImdbReviewService;
-import com.luca.moviereviews.jpa.repository.ImdbReviewRepository;
+import com.luca.moviereviews.jpa.repository.MetacriticReviewRepository;
 import com.luca.moviereviews.responses.ReviewSearchResponse;
 
 @Service
-public class ImdbReviewServiceImpl implements ImdbReviewService {
+public class MetacriticReviewServiceImpl implements ImdbReviewService {
 
-	private final ImdbReviewRepository imdbReviewRepository;
+	private final MetacriticReviewRepository imdbReviewRepository;
 
-	public ImdbReviewServiceImpl(ImdbReviewRepository imdbReviewRepository) {
+	public MetacriticReviewServiceImpl(MetacriticReviewRepository imdbReviewRepository) {
 		this.imdbReviewRepository = imdbReviewRepository;
 	}
 
 	@Override
 	@Transactional
-	public void updateReview(Long reviewId, ImdbReviewRequest request) {
+	public void updateReview(Long reviewId, MetacriticReviewRequest request) {
 
 		imdbReviewRepository.findById(reviewId).ifPresentOrElse(r -> {
 			if(request.getText()!=null) {
@@ -33,9 +32,11 @@ public class ImdbReviewServiceImpl implements ImdbReviewService {
 			if(request.getReviewDate()!=null) {
 				r.setReviewDate(request.getReviewDate());
 			}
-			if(request.getTitle()!=null) {
-				r.setTitle(request.getTitle());
+			
+			if(request.getUsername()!=null) {
+				r.setUsername(r.getUsername());
 			}
+			
 			
 		}, () -> {
 			throw new RuntimeException("Errore");

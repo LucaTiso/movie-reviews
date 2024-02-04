@@ -2,52 +2,39 @@ package com.luca.moviereviews.core.requests;
 
 public class MovieRequest {
 
-	private String movieName;
+	private String title;
 	
-	private String movieCode;
-
-	private String originalName;
+	private String href;
 
 	private Integer duration;
 
 	private String regia;
 
-	private String sceneggiatura;
+	
 
 	private String star;
 
-	private String movieCast;
+	private String cast;
 
-	private Integer movieYear;
+	private Integer year;
 
 	private String plot;
 
-	private Float rating;
+	private Float userRating;
+	
+	private Integer userNumRatings;
 
-	private Long numRatings;
-
-	private Long numFavourites;
 
 	private Integer metascore;
 	
-	private Integer currentPosition;
+	private Integer metascoreNumRatings;
 	
-	public String getMovieName() {
-		return movieName;
-	}
-
-	public void setMovieName(String movieName) {
-		this.movieName = movieName;
-	}
-
-	public String getOriginalName() {
-		return originalName;
-	}
-
-	public void setOriginalName(String originalName) {
-		this.originalName = originalName;
-	}
-
+	private String genre;
+	
+	private String movieRatingCategory;
+	
+	private String production;
+	
 	public Integer getDuration() {
 		return duration;
 	}
@@ -64,13 +51,6 @@ public class MovieRequest {
 		this.regia = regia;
 	}
 
-	public String getSceneggiatura() {
-		return sceneggiatura;
-	}
-
-	public void setSceneggiatura(String sceneggiatura) {
-		this.sceneggiatura = sceneggiatura;
-	}
 
 	public String getStar() {
 		return star;
@@ -80,22 +60,7 @@ public class MovieRequest {
 		this.star = star;
 	}
 
-	public String getMovieCast() {
-		return movieCast;
-	}
-
-	public void setMovieCast(String movieCast) {
-		this.movieCast = movieCast;
-	}
-
-	public Integer getMovieYear() {
-		return movieYear;
-	}
-
-	public void setMovieYear(Integer movieYear) {
-		this.movieYear = movieYear;
-	}
-
+	
 	public String getPlot() {
 		return plot;
 	}
@@ -104,29 +69,7 @@ public class MovieRequest {
 		this.plot = plot;
 	}
 
-	public Float getRating() {
-		return rating;
-	}
 
-	public void setRating(Float rating) {
-		this.rating = rating;
-	}
-
-	public Long getNumRatings() {
-		return numRatings;
-	}
-
-	public void setNumRatings(Long numRatings) {
-		this.numRatings = numRatings;
-	}
-
-	public Long getNumFavourites() {
-		return numFavourites;
-	}
-
-	public void setNumFavourites(Long numFavourites) {
-		this.numFavourites = numFavourites;
-	}
 
 	public Integer getMetascore() {
 		return metascore;
@@ -136,20 +79,85 @@ public class MovieRequest {
 		this.metascore = metascore;
 	}
 
-	public String getMovieCode() {
-		return movieCode;
+
+	public String getCast() {
+		return cast;
 	}
 
-	public void setMovieCode(String movieCode) {
-		this.movieCode = movieCode;
+	public void setCast(String cast) {
+		this.cast = cast;
 	}
 
-	public Integer getCurrentPosition() {
-		return currentPosition;
+	public String getGenre() {
+		return genre;
 	}
 
-	public void setCurrentPosition(Integer currentPosition) {
-		this.currentPosition = currentPosition;
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
+
+	public String getHref() {
+		return href;
+	}
+
+	public void setHref(String href) {
+		this.href = href;
+	}
+
+	public Integer getMetascoreNumRatings() {
+		return metascoreNumRatings;
+	}
+
+	public void setMetascoreNumRatings(Integer metascoreNumRatings) {
+		this.metascoreNumRatings = metascoreNumRatings;
+	}
+
+	public String getMovieRatingCategory() {
+		return movieRatingCategory;
+	}
+
+	public void setMovieRatingCategory(String movieRatingCategory) {
+		this.movieRatingCategory = movieRatingCategory;
+	}
+
+	public String getProduction() {
+		return production;
+	}
+
+	public void setProduction(String production) {
+		this.production = production;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public Integer getUserNumRatings() {
+		return userNumRatings;
+	}
+
+	public void setUserNumRatings(Integer userNumRatings) {
+		this.userNumRatings = userNumRatings;
+	}
+
+	public Float getUserRating() {
+		return userRating;
+	}
+
+	public void setUserRating(Float userRating) {
+		this.userRating = userRating;
+	}
+
+	public Integer getYear() {
+		return year;
+	}
+
+	public void setYear(Integer year) {
+		this.year = year;
 	}
 	
 }

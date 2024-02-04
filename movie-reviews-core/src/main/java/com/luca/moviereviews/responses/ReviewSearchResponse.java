@@ -4,7 +4,7 @@ import java.util.List;
 
 public class ReviewSearchResponse {
 
-	private List<ReviewResponse> reviewList;
+	private List<WebappReviewResponse> reviewList;
 
 	private int pageNumber;
 
@@ -14,11 +14,11 @@ public class ReviewSearchResponse {
 
 	private Long toNum;
 
-	public List<ReviewResponse> getReviewList() {
+	public List<WebappReviewResponse> getReviewList() {
 		return reviewList;
 	}
 
-	public void setReviewList(List<ReviewResponse> reviewList) {
+	public void setReviewList(List<WebappReviewResponse> reviewList) {
 		this.reviewList = reviewList;
 	}
 

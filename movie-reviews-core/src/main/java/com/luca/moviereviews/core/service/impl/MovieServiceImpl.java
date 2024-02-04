@@ -34,12 +34,7 @@ public class MovieServiceImpl implements MovieService {
 
 		Movie movie = EntityUtils.dtoToEntity(movieRequest);
 
-		Integer lastPosition = movieRepository.findLastMoviePosition();
-
-		lastPosition = lastPosition != null ? lastPosition + 1 : 1;
-
-		movie.setCurrentPosition(lastPosition);
-
+	
 		movieRepository.save(movie);
 
 	}
@@ -52,48 +47,56 @@ public class MovieServiceImpl implements MovieService {
 
 		if (toUpdate.isPresent()) {
 			Movie movie = toUpdate.get();
-			if (movieRequest.getCurrentPosition() != null) {
-				movie.setCurrentPosition(movieRequest.getCurrentPosition());
-			}
+			
 			if (movieRequest.getDuration() != null) {
 				movie.setDuration(movieRequest.getDuration());
 			}
 			if (movieRequest.getMetascore() != null) {
 				movie.setMetascore(movieRequest.getMetascore());
 			}
-			if (movieRequest.getMovieCast() != null) {
-				movie.setMovieCast(movieRequest.getMovieCast());
+			if(movieRequest.getMetascoreNumRatings()!=null) {
+				movie.setMetascoreNumRatings(movieRequest.getMetascoreNumRatings());
 			}
-			if (movieRequest.getMovieCode() != null) {
-				movie.setMovieCode(movieRequest.getMovieCode());
+			
+			if(movieRequest.getGenre()!=null) {
+				movie.setGenre(movieRequest.getGenre());
 			}
-			if (movieRequest.getMovieName() != null) {
-				movie.setMovieName(movieRequest.getMovieName());
+			
+			if(movieRequest.getMovieRatingCategory()!=null) {
+				movie.setMovieRatingCategory(movieRequest.getMovieRatingCategory());
 			}
-			if (movieRequest.getMovieYear() != null) {
-				movie.setMovieYear(movieRequest.getMovieYear());
+			
+			if(movieRequest.getProduction()!=null) {
+				movie.setProduction(movieRequest.getProduction());
 			}
-			if (movieRequest.getNumFavourites() != null) {
-				movie.setNumFavourites(movieRequest.getNumFavourites());
+			
+			if (movieRequest.getCast() != null) {
+				movie.setCast(movieRequest.getCast());
 			}
-			if (movieRequest.getNumRatings() != null) {
-				movie.setNumRatings(movieRequest.getNumRatings());
+			if (movieRequest.getHref() != null) {
+				movie.setHref(movieRequest.getHref());
 			}
-			if (movieRequest.getOriginalName() != null) {
-				movie.setOriginalName(movieRequest.getOriginalName());
+			if (movieRequest.getTitle() != null) {
+				movie.setTitle(movieRequest.getTitle());
 			}
+			if (movieRequest.getYear() != null) {
+				movie.setYear(movieRequest.getYear());
+			}
+			
+			if (movieRequest.getUserNumRatings() != null) {
+				movie.setUserNumRatings(movieRequest.getUserNumRatings());
+			}
+			
 			if (movieRequest.getPlot() != null) {
 				movie.setPlot(movieRequest.getPlot());
 			}
-			if (movieRequest.getRating() != null) {
-				movie.setRating(movieRequest.getRating());
+			if (movieRequest.getUserRating() != null) {
+				movie.setUserRating(movieRequest.getUserRating());
 			}
 			if (movieRequest.getRegia() != null) {
 				movie.setRegia(movieRequest.getRegia());
 			}
-			if (movieRequest.getSceneggiatura() != null) {
-				movie.setSceneggiatura(movieRequest.getSceneggiatura());
-			}
+			
 			if (movieRequest.getStar() != null) {
 				movie.setStar(movieRequest.getStar());
 			}

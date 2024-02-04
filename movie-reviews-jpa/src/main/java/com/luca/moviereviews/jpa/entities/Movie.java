@@ -30,8 +30,6 @@ public class Movie implements Serializable {
 
 	private String title;
 
-	private String originalName;
-
 	private Integer duration;
 
 	private String regia;
@@ -62,21 +60,13 @@ public class Movie implements Serializable {
 	private List<WebappReview> webappReviews = new ArrayList<>();
 
 	@OneToMany(targetEntity = MetacriticUserReview.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "movie")
-	private List<MetacriticUserReview> imdbReviews = new ArrayList<>();
+	private List<MetacriticUserReview> metacriticReviews = new ArrayList<>();
 
 	/*@ManyToMany(mappedBy = "favouriteList",fetch = FetchType.LAZY)
 	private List<WebappUser> users=new ArrayList<>();*/
 
 	public Long getId() {
 		return id;
-	}
-
-	public String getOriginalName() {
-		return originalName;
-	}
-
-	public void setOriginalName(String originalName) {
-		this.originalName = originalName;
 	}
 
 	public Integer getDuration() {
@@ -128,15 +118,6 @@ public class Movie implements Serializable {
 
 	public void setWebappReviews(List<WebappReview> webappReviews) {
 		this.webappReviews = webappReviews;
-	}
-
-
-	public List<MetacriticUserReview> getImdbReviews() {
-		return imdbReviews;
-	}
-
-	public void setImdbReviews(List<MetacriticUserReview> imdbReviews) {
-		this.imdbReviews = imdbReviews;
 	}
 
 	public String getHref() {
@@ -222,5 +203,15 @@ public class Movie implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	public List<MetacriticUserReview> getMetacriticReviews() {
+		return metacriticReviews;
+	}
+
+	public void setMetacriticReviews(List<MetacriticUserReview> metacriticReviews) {
+		this.metacriticReviews = metacriticReviews;
+	}
+	
+	
 
 }

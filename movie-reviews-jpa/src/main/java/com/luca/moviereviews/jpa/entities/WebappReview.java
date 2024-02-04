@@ -19,7 +19,7 @@ public class WebappReview {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "WEBAPP_REVIEW_SEQ")
-	@SequenceGenerator(name = "WEBAPP_REVIEW_SEQ", sequenceName = "WEBAPP_REVIEW_SEQ", allocationSize = 5)
+	@SequenceGenerator(name = "WEBAPP_REVIEW_SEQ", sequenceName = "WEBAPP_REVIEW_SEQ", allocationSize = 1)
 	private Long id;
 		
 	private String text;

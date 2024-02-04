@@ -1,8 +1,6 @@
 package com.luca.moviereviews.jpa.entities;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -19,11 +17,12 @@ import jakarta.persistence.Table;
 public class MetacriticUserReview {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "IMDB_REVIEW_SEQ")
-	@SequenceGenerator(name = "IMDB_REVIEW_SEQ", sequenceName = "IMDB_REVIEW_SEQ", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "METACRITIC_USER_REVIEW_SEQ")
+	@SequenceGenerator(name = "METACRITIC_USER_REVIEW_SEQ", sequenceName = "METACRITIC_USER_REVIEW_SEQ", allocationSize = 1)
 	private Long id;
 	
-	//
+	private String username;
+	
 	@Column(name="movie_id")
 	private Long movieId;
 
@@ -42,14 +41,7 @@ public class MetacriticUserReview {
 		return id;
 	}
 
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
+	
 	public String getText() {
 		return text;
 	}
@@ -74,22 +66,6 @@ public class MetacriticUserReview {
 		this.reviewDate = reviewDate;
 	}
 
-	public LocalDateTime getReviewTime() {
-		return reviewTime;
-	}
-
-	public void setReviewTime(LocalDateTime reviewTime) {
-		this.reviewTime = reviewTime;
-	}
-
-	public ImdbUser getImdbUser() {
-		return imdbUser;
-	}
-
-	public void setImdbUser(ImdbUser imdbUser) {
-		this.imdbUser = imdbUser;
-	}
-
 	public Movie getMovie() {
 		return movie;
 	}
@@ -98,5 +74,29 @@ public class MetacriticUserReview {
 		this.movie = movie;
 	}
 
+
+	public String getUsername() {
+		return username;
+	}
+
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+
+	public Long getMovieId() {
+		return movieId;
+	}
+
+
+	public void setMovieId(Long movieId) {
+		this.movieId = movieId;
+	}
+
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
+	
 
 }

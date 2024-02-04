@@ -3,19 +3,11 @@ package com.luca.moviereviews.core.requests;
 
 public class WebappReviewRequest {
 
-	private String title;
+	private String username;
 
 	private String text;
 
 	private Integer rating;
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
 
 	public String getText() {
 		return text;
@@ -33,4 +25,12 @@ public class WebappReviewRequest {
 		this.rating = rating;
 	}
 
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
 }

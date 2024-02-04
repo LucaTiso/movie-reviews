@@ -18,7 +18,7 @@ import com.luca.moviereviews.jpa.entities.WebappReview;
 import com.luca.moviereviews.jpa.entities.WebappUser;
 import com.luca.moviereviews.jpa.repository.WebappReviewRepository;
 import com.luca.moviereviews.jpa.repository.WebappUserRepository;
-import com.luca.moviereviews.responses.ReviewResponse;
+import com.luca.moviereviews.responses.WebappReviewResponse;
 import com.luca.moviereviews.responses.ReviewSearchResponse;
 
 @Service
@@ -67,7 +67,7 @@ public class WebappReviewServiceImpl implements WebappReviewService {
 			WebappReview review = optionalReview.get();
 			review.setRating(request.getRating());
 			review.setText(request.getText());
-			review.setTitle(request.getTitle());
+			review.setUsername(request.getUsername());
 		}
 	}
 
@@ -95,7 +95,7 @@ public class WebappReviewServiceImpl implements WebappReviewService {
 		Page<WebappReview> reviewPage = webappReviewRepository.findAll(spec,
 				PageRequest.of(reviewSearchParams.getPageNumber(), reviewSearchParams.getPageRecords(), sort));
 
-		List<ReviewResponse> reviewList = reviewPage.getContent().stream().map(EntityUtils::entityToDto).toList();
+		List<WebappReviewResponse> reviewList = reviewPage.getContent().stream().map(EntityUtils::entityToDto).toList();
 
 		ReviewSearchResponse searchResponse = new ReviewSearchResponse();
 		searchResponse.setReviewList(reviewList);
