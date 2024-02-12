@@ -20,12 +20,10 @@ import com.luca.moviereviews.responses.MovieSearchResponse;
 @Service
 public class MovieServiceImpl implements MovieService {
 
-	
 	private MovieRepository movieRepository;
-	
-	
+
 	public MovieServiceImpl(MovieRepository movieRepository) {
-		this.movieRepository=movieRepository;
+		this.movieRepository = movieRepository;
 	}
 
 	@Override
@@ -34,7 +32,6 @@ public class MovieServiceImpl implements MovieService {
 
 		Movie movie = EntityUtils.dtoToEntity(movieRequest);
 
-	
 		movieRepository.save(movie);
 
 	}
@@ -47,31 +44,31 @@ public class MovieServiceImpl implements MovieService {
 
 		if (toUpdate.isPresent()) {
 			Movie movie = toUpdate.get();
-			
+
 			if (movieRequest.getDuration() != null) {
 				movie.setDuration(movieRequest.getDuration());
 			}
 			if (movieRequest.getMetascore() != null) {
 				movie.setMetascore(movieRequest.getMetascore());
 			}
-			if(movieRequest.getMetascoreNumRatings()!=null) {
+			if (movieRequest.getMetascoreNumRatings() != null) {
 				movie.setMetascoreNumRatings(movieRequest.getMetascoreNumRatings());
 			}
-			
-			if(movieRequest.getGenre()!=null) {
+
+			if (movieRequest.getGenre() != null) {
 				movie.setGenre(movieRequest.getGenre());
 			}
-			
-			if(movieRequest.getMovieRatingCategory()!=null) {
+
+			if (movieRequest.getMovieRatingCategory() != null) {
 				movie.setMovieRatingCategory(movieRequest.getMovieRatingCategory());
 			}
-			
-			if(movieRequest.getProduction()!=null) {
+
+			if (movieRequest.getProduction() != null) {
 				movie.setProduction(movieRequest.getProduction());
 			}
-			
+
 			if (movieRequest.getCast() != null) {
-				movie.setCast(movieRequest.getCast());
+				movie.setMovieCast(movieRequest.getCast());
 			}
 			if (movieRequest.getHref() != null) {
 				movie.setHref(movieRequest.getHref());
@@ -82,11 +79,11 @@ public class MovieServiceImpl implements MovieService {
 			if (movieRequest.getYear() != null) {
 				movie.setYear(movieRequest.getYear());
 			}
-			
+
 			if (movieRequest.getUserNumRatings() != null) {
 				movie.setUserNumRatings(movieRequest.getUserNumRatings());
 			}
-			
+
 			if (movieRequest.getPlot() != null) {
 				movie.setPlot(movieRequest.getPlot());
 			}
@@ -96,7 +93,7 @@ public class MovieServiceImpl implements MovieService {
 			if (movieRequest.getRegia() != null) {
 				movie.setRegia(movieRequest.getRegia());
 			}
-			
+
 			if (movieRequest.getStar() != null) {
 				movie.setStar(movieRequest.getStar());
 			}
@@ -107,12 +104,10 @@ public class MovieServiceImpl implements MovieService {
 	@Override
 	@Transactional
 	public MovieSearchResponse getMovies(MovieSearchParams movieSearchParams) {
-		
+
 		Sort sort = movieSearchParams.getSortDirection().toUpperCase().contentEquals("DESC")
 				? Sort.by(movieSearchParams.getSortBy()).descending()
 				: Sort.by(movieSearchParams.getSortBy()).ascending();
-
-	
 
 		Page<Movie> moviePage = movieRepository
 				.findAll(PageRequest.of(movieSearchParams.getPageNumber(), movieSearchParams.getPageRecords(), sort));
@@ -123,15 +118,20 @@ public class MovieServiceImpl implements MovieService {
 		searchResponse.setMovieList(movieList);
 		searchResponse.setPageNumber(moviePage.getNumber());
 		searchResponse.setTotalNumber(moviePage.getTotalElements());
-		
+
 		// if first page this should be 0
-		Long numPreviousPage=movieSearchParams.getPageNumber()*movieSearchParams.getPageRecords()*1l;
-		
-		searchResponse.setFromNum(numPreviousPage+1);
-		searchResponse.setToNum(numPreviousPage+moviePage.getNumberOfElements());
-		
+		Long numPreviousPage = movieSearchParams.getPageNumber() * movieSearchParams.getPageRecords() * 1l;
+
+		searchResponse.setFromNum(numPreviousPage + 1);
+		searchResponse.setToNum(numPreviousPage + moviePage.getNumberOfElements());
 
 		return searchResponse;
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public MovieResponse getMovie(Long id) {
+		return movieRepository.findById(id).map(EntityUtils::entityToDto).orElseThrow(() -> new RuntimeException());
 	}
 
 }

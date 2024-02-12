@@ -38,24 +38,14 @@ public class WebappReviewServiceImpl implements WebappReviewService {
 
 	@Override
 	@Transactional
-	public void addReview(Long movieId, WebappReviewRequest request, String username) {
+	public void addReview(Long movieId, WebappReviewRequest request) {
 
-		// Optional<Movie> movieOptional = movieRepository.findById(movideId);
-
-		Optional<WebappUser> optionalUser = webappUserRepository.findByUsername(username);
-
-		if (optionalUser.isPresent()) {
-
-			WebappUser webappUser = optionalUser.get();
-
+		WebappUser user=webappUserRepository.findByUsername(request.getUsername()).orElseThrow(()-> new RuntimeException("Utente non trovato"));
 			WebappReview webappReview = EntityUtils.dtoToEntity(request);
 			webappReview.setMovieId(movieId);
-			System.out.println("movie id: " + movieId);
-			webappReview.setWebappUser(webappUser);
-
+			webappReview.setWebappUser(user);
 			webappReviewRepository.save(webappReview);
-
-		}
+			
 	}
 
 	@Override
@@ -67,7 +57,7 @@ public class WebappReviewServiceImpl implements WebappReviewService {
 			WebappReview review = optionalReview.get();
 			review.setRating(request.getRating());
 			review.setText(request.getText());
-			review.setUsername(request.getUsername());
+			//review.setUsername(request.getUsername());
 		}
 	}
 
@@ -109,6 +99,15 @@ public class WebappReviewServiceImpl implements WebappReviewService {
 		searchResponse.setToNum(numPreviousPage + reviewPage.getNumberOfElements());
 
 		return searchResponse;
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public WebappReviewResponse getReview(Long movieId, Long reviewId) {
+		
+		return webappReviewRepository.findById(reviewId).map(EntityUtils::entityToDto).orElseThrow(()->new RuntimeException("Ops"));
+	
+		
 	}
 
 }

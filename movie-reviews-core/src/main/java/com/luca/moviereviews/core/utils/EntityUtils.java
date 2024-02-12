@@ -30,7 +30,7 @@ public class EntityUtils {
 		movie.setStar(movieRequest.getStar());
 		movie.setYear(movieRequest.getYear());
 		
-		movie.setCast(movieRequest.getCast());
+		movie.setMovieCast(movieRequest.getCast());
 		
 		movie.setGenre(movieRequest.getGenre());
 		movie.setHref(movieRequest.getHref());
@@ -54,7 +54,7 @@ public class EntityUtils {
 		movieResponse.setTitle(movie.getTitle());
 		movieResponse.setDuration(movie.getDuration());
 		movieResponse.setMetascore(movie.getMetascore());
-		movieResponse.setCast(movie.getCast());
+		movieResponse.setCast(movie.getMovieCast());
 		movieResponse.setHref(movie.getHref());
 		movieResponse.setUserNumRatings(movie.getUserNumRatings());
 		
@@ -128,7 +128,6 @@ public class EntityUtils {
 	
 		reviewResponse.setRating(webappReview.getRating());
 		reviewResponse.setUsername(webappReview.getUsername());
-		reviewResponse.setReviewerUsername(webappReview.getWebappUser().getUsername());
 		reviewResponse.setReviewerId(webappReview.getWebappUser().getId());
 
 		return reviewResponse;

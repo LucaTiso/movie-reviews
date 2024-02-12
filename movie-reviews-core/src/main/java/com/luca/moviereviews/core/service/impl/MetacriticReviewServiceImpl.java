@@ -3,59 +3,25 @@ package com.luca.moviereviews.core.service.impl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.luca.moviereviews.core.model.ReviewSearchParams;
-import com.luca.moviereviews.core.requests.MetacriticReviewRequest;
-import com.luca.moviereviews.core.service.ImdbReviewService;
+import com.luca.moviereviews.core.service.MetacriticReviewService;
+import com.luca.moviereviews.core.utils.EntityUtils;
 import com.luca.moviereviews.jpa.repository.MetacriticReviewRepository;
-import com.luca.moviereviews.responses.ReviewSearchResponse;
+import com.luca.moviereviews.responses.MetacriticReviewResponse;
 
 @Service
-public class MetacriticReviewServiceImpl implements ImdbReviewService {
+public class MetacriticReviewServiceImpl implements MetacriticReviewService {
 
-	private final MetacriticReviewRepository imdbReviewRepository;
+	private final MetacriticReviewRepository metacriticReviewRepository;
 
-	public MetacriticReviewServiceImpl(MetacriticReviewRepository imdbReviewRepository) {
-		this.imdbReviewRepository = imdbReviewRepository;
+	public MetacriticReviewServiceImpl(MetacriticReviewRepository metacriticReviewRepository) {
+		this.metacriticReviewRepository = metacriticReviewRepository;
 	}
 
 	@Override
-	@Transactional
-	public void updateReview(Long reviewId, MetacriticReviewRequest request) {
-
-		imdbReviewRepository.findById(reviewId).ifPresentOrElse(r -> {
-			if(request.getText()!=null) {
-				r.setText(request.getText());
-			}
-			if(request.getRating()!=null) {
-				r.setRating(request.getRating());
-			}
-			if(request.getReviewDate()!=null) {
-				r.setReviewDate(request.getReviewDate());
-			}
-			
-			if(request.getUsername()!=null) {
-				r.setUsername(r.getUsername());
-			}
-			
-			
-		}, () -> {
-			throw new RuntimeException("Errore");
-		});
+	@Transactional(readOnly = true)
+	public MetacriticReviewResponse getReview(Long movieId, Long reviewId) {
+		return metacriticReviewRepository.findById(reviewId).map(EntityUtils::entityToDto)
+				.orElseThrow(() -> new RuntimeException("ops"));
 
 	}
-
-	@Override
-	@Transactional
-	public void deleteReview(Long reviewId) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	@Transactional
-	public ReviewSearchResponse getReviews(Long movieId, ReviewSearchParams reviewSearchParams) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

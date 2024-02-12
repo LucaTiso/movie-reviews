@@ -76,7 +76,6 @@ public class WebappUserController {
 	public ResponseEntity<?> addFavourite(@PathVariable Long id, @RequestHeader("username") String username) {
 
 		this.webappUserService.addFavourite(id, username);
-
 		return new ResponseEntity<>(null, HttpStatus.OK);
 	}
 
@@ -107,9 +106,7 @@ public class WebappUserController {
 	@GetMapping(path = "/favourites")
 	public ResponseEntity<?> retrieveFavourite(@RequestHeader("username") String username) {
 
-		
 		webappUserService.searchFavourites(username);
-		
 		return new ResponseEntity<>(null, HttpStatus.OK);
 	}
 

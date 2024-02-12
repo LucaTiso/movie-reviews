@@ -17,8 +17,6 @@ public class WebappReviewResponse {
 
 	private LocalDateTime reviewTime;
 	
-	private String reviewerUsername;
-	
 	private Long reviewerId;
 
 	public Long getId() {
@@ -60,14 +58,6 @@ public class WebappReviewResponse {
 
 	public void setReviewTime(LocalDateTime reviewTime) {
 		this.reviewTime = reviewTime;
-	}
-
-	public String getReviewerUsername() {
-		return reviewerUsername;
-	}
-
-	public void setReviewerUsername(String reviewerUsername) {
-		this.reviewerUsername = reviewerUsername;
 	}
 
 	public Long getReviewerId() {

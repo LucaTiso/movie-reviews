@@ -2,6 +2,7 @@ package com.luca.moviereviews.core.service;
 
 import com.luca.moviereviews.core.model.MovieSearchParams;
 import com.luca.moviereviews.core.requests.MovieRequest;
+import com.luca.moviereviews.responses.MovieResponse;
 import com.luca.moviereviews.responses.MovieSearchResponse;
 
 public interface MovieService {
@@ -11,5 +12,8 @@ public interface MovieService {
 	void updateMovie(MovieRequest movieRequest,Long id);
 	
 	MovieSearchResponse getMovies(MovieSearchParams movieSearchParams);
+	
+	
+	MovieResponse getMovie(Long id);
 
 }

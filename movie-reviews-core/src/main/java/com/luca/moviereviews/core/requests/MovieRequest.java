@@ -10,8 +10,6 @@ public class MovieRequest {
 
 	private String regia;
 
-	
-
 	private String star;
 
 	private String cast;
@@ -23,7 +21,6 @@ public class MovieRequest {
 	private Float userRating;
 	
 	private Integer userNumRatings;
-
 
 	private Integer metascore;
 	

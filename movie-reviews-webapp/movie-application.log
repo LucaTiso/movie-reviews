@@ -1,32 +1,234 @@
-2023-10-22_22:34:25.260 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
-2023-10-22_22:34:25.382 [restartedMain] INFO  c.l.m.webapp.MovieReviewsApplication - Starting MovieReviewsApplication using Java 17 with PID 23940 (C:\Users\Luca\movie_reviews_05082023\movie-reviews\movie-reviews-webapp\target\classes started by Luca in C:\Users\Luca\movie_reviews_05082023\movie-reviews\movie-reviews-webapp)
-2023-10-22_22:34:25.389 [restartedMain] INFO  c.l.m.webapp.MovieReviewsApplication - No active profile set, falling back to 1 default profile: "default"
-2023-10-22_22:34:25.517 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2023-10-22_22:34:25.520 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2023-10-22_22:34:26.836 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-10-22_22:34:26.972 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 118 ms. Found 5 JPA repository interfaces.
-2023-10-22_22:34:28.758 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
-2023-10-22_22:34:28.779 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-2023-10-22_22:34:28.788 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2023-10-22_22:34:28.790 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.11]
-2023-10-22_22:34:28.941 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2023-10-22_22:34:28.948 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3416 ms
-2023-10-22_22:34:29.077 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2023-10-22_22:34:29.797 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@42184016
-2023-10-22_22:34:29.803 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2023-10-22_22:34:29.923 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-10-22_22:34:30.147 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.6.Final
-2023-10-22_22:34:30.158 [restartedMain] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
-2023-10-22_22:34:30.656 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
-2023-10-22_22:34:31.054 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-10-22_22:34:31.898 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
-2023-10-22_22:34:32.188 [restartedMain] WARN  org.hibernate.mapping.RootClass - HHH000038: Composite-id class does not override equals(): com.luca.moviereviews.jpa.entities.FavouritesMappingId
-2023-10-22_22:34:32.189 [restartedMain] WARN  org.hibernate.mapping.RootClass - HHH000039: Composite-id class does not override hashCode(): com.luca.moviereviews.jpa.entities.FavouritesMappingId
-2023-10-22_22:34:33.511 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-10-22_22:34:33.571 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-10-22_22:34:34.328 [restartedMain] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
-2023-10-22_22:34:35.475 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-10-22_22:34:36.261 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
-2023-10-22_22:34:36.284 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
-2023-10-22_22:34:36.326 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
-2023-10-22_22:34:36.347 [restartedMain] INFO  c.l.m.webapp.MovieReviewsApplication - Started MovieReviewsApplication in 11.701 seconds (process running for 12.947)
+2024-02-12_21:18:44.156 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-02-12_21:18:44.202 [restartedMain] INFO  c.l.m.webapp.MovieReviewsApplication - Starting MovieReviewsApplication using Java 17.0.9 with PID 627984 (C:\Users\Utente\da_chiavetta\movie_reviews_05082023\movie-reviews\movie-reviews-webapp\target\classes started by Luca in C:\Users\Utente\da_chiavetta\movie_reviews_05082023\movie-reviews\movie-reviews-webapp)
+2024-02-12_21:18:44.203 [restartedMain] INFO  c.l.m.webapp.MovieReviewsApplication - No active profile set, falling back to 1 default profile: "default"
+2024-02-12_21:18:44.257 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-02-12_21:18:44.257 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-02-12_21:18:44.783 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-12_21:18:44.847 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 55 ms. Found 5 JPA repository interfaces.
+2024-02-12_21:18:45.669 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2024-02-12_21:18:45.682 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-02-12_21:18:45.685 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-02-12_21:18:45.685 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.11]
+2024-02-12_21:18:45.748 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-02-12_21:18:45.749 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1490 ms
+2024-02-12_21:18:45.804 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-02-12_21:18:45.993 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4ed73b72
+2024-02-12_21:18:45.994 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-02-12_21:18:46.044 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-12_21:18:46.105 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.6.Final
+2024-02-12_21:18:46.108 [restartedMain] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-02-12_21:18:46.290 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-02-12_21:18:46.441 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-12_21:18:46.757 [restartedMain] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-02-12_21:18:46.861 [restartedMain] WARN  org.hibernate.mapping.RootClass - HHH000038: Composite-id class does not override equals(): com.luca.moviereviews.jpa.entities.FavouritesMappingId
+2024-02-12_21:18:46.861 [restartedMain] WARN  org.hibernate.mapping.RootClass - HHH000039: Composite-id class does not override hashCode(): com.luca.moviereviews.jpa.entities.FavouritesMappingId
+2024-02-12_21:18:47.387 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-02-12_21:18:47.415 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-12_21:18:47.678 [restartedMain] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-02-12_21:18:48.084 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-02-12_21:18:48.408 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2024-02-12_21:18:48.423 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-02-12_21:18:48.447 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2024-02-12_21:18:48.457 [restartedMain] INFO  c.l.m.webapp.MovieReviewsApplication - Started MovieReviewsApplication in 4.552 seconds (process running for 5.042)
+2024-02-12_21:21:17.676 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-02-12_21:21:17.676 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-02-12_21:21:17.678 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2024-02-12_21:21:17.759 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select w1_0.id,w1_0.movie_id,w1_0.rating,w1_0.reviewDate,w1_0.reviewTime,w1_0.text,w1_0.username,w1_0.webapp_user_id,w2_0.id,w2_0.country,w2_0.email,w2_0.lastUpdateTime,w2_0.password,w2_0.registrationTime,w2_0.username from WebappReview w1_0 join WebappUser w2_0 on w2_0.id=w1_0.webapp_user_id where w1_0.id=?
+2024-02-12_21:21:17.800 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - delete from WebappReview where id=?
+2024-02-12_21:24:14.499 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - select w1_0.id,w1_0.country,w1_0.email,w1_0.lastUpdateTime,w1_0.password,w1_0.registrationTime,w1_0.username from WebappUser w1_0 where w1_0.username=?
+2024-02-12_21:24:14.505 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - select m1_0.id,m1_0.duration,m1_0.genre,m1_0.href,m1_0.metascore,m1_0.metascoreNumRatings,m1_0.movieCast,m1_0.movieRatingCategory,m1_0.plot,m1_0.production,m1_0.regia,m1_0.star,m1_0.title,m1_0.userNumRatings,m1_0.userRating,m1_0.year from MOVIE_NEW m1_0 where m1_0.id=?
+2024-02-12_21:24:14.516 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - insert into FAVOURITES_MAPPING (MOVIE_ID,WEBAPP_USER_ID) values (?,?)
+2024-02-12_21:25:09.042 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - select w1_0.id,w1_0.country,w1_0.email,w1_0.lastUpdateTime,w1_0.password,w1_0.registrationTime,w1_0.username from WebappUser w1_0 where w1_0.username=?
+2024-02-12_21:25:09.044 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - select m1_0.id,m1_0.duration,m1_0.genre,m1_0.href,m1_0.metascore,m1_0.metascoreNumRatings,m1_0.movieCast,m1_0.movieRatingCategory,m1_0.plot,m1_0.production,m1_0.regia,m1_0.star,m1_0.title,m1_0.userNumRatings,m1_0.userRating,m1_0.year from MOVIE_NEW m1_0 where m1_0.id=?
+2024-02-12_21:25:09.047 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - insert into FAVOURITES_MAPPING (MOVIE_ID,WEBAPP_USER_ID) values (?,?)
+2024-02-12_21:26:02.851 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - select w1_0.id,w1_0.country,w1_0.email,w1_0.lastUpdateTime,w1_0.password,w1_0.registrationTime,w1_0.username from WebappUser w1_0 where w1_0.username=?
+2024-02-12_21:26:02.863 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - delete from FAVOURITES_MAPPING where WEBAPP_USER_ID=? and MOVIE_ID=?
+2024-02-12_21:26:52.244 [http-nio-8080-exec-8] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public org.springframework.http.ResponseEntity<?> com.luca.moviereviews.webapp.controllers.WebappUserController.deleteFavourite(java.util.List<java.lang.Long>,java.lang.String)]
+2024-02-12_21:28:40.206 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - select w1_0.id,w1_0.country,w1_0.email,w1_0.lastUpdateTime,w1_0.password,w1_0.registrationTime,w1_0.username from WebappUser w1_0 where w1_0.username=?
+2024-02-12_21:28:40.210 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - delete from FAVOURITES_MAPPING where WEBAPP_USER_ID=? and MOVIE_ID in (?)
+2024-02-12_21:28:48.673 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select w1_0.id,w1_0.country,w1_0.email,w1_0.lastUpdateTime,w1_0.password,w1_0.registrationTime,w1_0.username from WebappUser w1_0 where w1_0.username=?
+2024-02-12_21:28:48.677 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - delete from FAVOURITES_MAPPING where WEBAPP_USER_ID=? and MOVIE_ID in (?)
+2024-02-12_21:29:39.993 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select w1_0.id,w1_0.country,w1_0.email,w1_0.lastUpdateTime,w1_0.password,w1_0.registrationTime,w1_0.username from WebappUser w1_0 where w1_0.username=?
+2024-02-12_21:29:39.996 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select m1_0.id,m1_0.duration,m1_0.genre,m1_0.href,m1_0.metascore,m1_0.metascoreNumRatings,m1_0.movieCast,m1_0.movieRatingCategory,m1_0.plot,m1_0.production,m1_0.regia,m1_0.star,m1_0.title,m1_0.userNumRatings,m1_0.userRating,m1_0.year from MOVIE_NEW m1_0 where m1_0.id=?
+2024-02-12_21:29:39.998 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - insert into FAVOURITES_MAPPING (MOVIE_ID,WEBAPP_USER_ID) values (?,?)
+2024-02-12_21:29:44.439 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - select w1_0.id,w1_0.country,w1_0.email,w1_0.lastUpdateTime,w1_0.password,w1_0.registrationTime,w1_0.username from WebappUser w1_0 where w1_0.username=?
+2024-02-12_21:29:44.441 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - select m1_0.id,m1_0.duration,m1_0.genre,m1_0.href,m1_0.metascore,m1_0.metascoreNumRatings,m1_0.movieCast,m1_0.movieRatingCategory,m1_0.plot,m1_0.production,m1_0.regia,m1_0.star,m1_0.title,m1_0.userNumRatings,m1_0.userRating,m1_0.year from MOVIE_NEW m1_0 where m1_0.id=?
+2024-02-12_21:29:44.443 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - insert into FAVOURITES_MAPPING (MOVIE_ID,WEBAPP_USER_ID) values (?,?)
+2024-02-12_21:29:51.376 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - select w1_0.id,w1_0.country,w1_0.email,w1_0.lastUpdateTime,w1_0.password,w1_0.registrationTime,w1_0.username from WebappUser w1_0 where w1_0.username=?
+2024-02-12_21:29:51.378 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - select m1_0.id,m1_0.duration,m1_0.genre,m1_0.href,m1_0.metascore,m1_0.metascoreNumRatings,m1_0.movieCast,m1_0.movieRatingCategory,m1_0.plot,m1_0.production,m1_0.regia,m1_0.star,m1_0.title,m1_0.userNumRatings,m1_0.userRating,m1_0.year from MOVIE_NEW m1_0 where m1_0.id=?
+2024-02-12_21:29:51.381 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - insert into FAVOURITES_MAPPING (MOVIE_ID,WEBAPP_USER_ID) values (?,?)
+2024-02-12_21:29:51.397 [http-nio-8080-exec-5] INFO  org.hibernate.orm.jdbc.batch - HHH100503: On release of batch it still contained JDBC statements
+2024-02-12_21:29:51.397 [http-nio-8080-exec-5] ERROR org.hibernate.orm.jdbc.batch - HHH100501: Exception executing batch [java.sql.BatchUpdateException: Batch entry 0 insert into FAVOURITES_MAPPING (MOVIE_ID,WEBAPP_USER_ID) values (401,1) was aborted: ERROR: duplicate key value violates unique constraint "favourites_mapping_pkey"
+  Dettaglio: Key (movie_id, webapp_user_id)=(401, 1) already exists.  Call getNextException to see other errors in the batch.], SQL: insert into FAVOURITES_MAPPING (MOVIE_ID,WEBAPP_USER_ID) values (?,?)
+2024-02-12_21:29:51.398 [http-nio-8080-exec-5] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 0, SQLState: 23505
+2024-02-12_21:29:51.398 [http-nio-8080-exec-5] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Batch entry 0 insert into FAVOURITES_MAPPING (MOVIE_ID,WEBAPP_USER_ID) values (401,1) was aborted: ERROR: duplicate key value violates unique constraint "favourites_mapping_pkey"
+  Dettaglio: Key (movie_id, webapp_user_id)=(401, 1) already exists.  Call getNextException to see other errors in the batch.
+2024-02-12_21:29:51.398 [http-nio-8080-exec-5] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - ERROR: duplicate key value violates unique constraint "favourites_mapping_pkey"
+  Dettaglio: Key (movie_id, webapp_user_id)=(401, 1) already exists.
+2024-02-12_21:29:51.404 [http-nio-8080-exec-5] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.dao.DataIntegrityViolationException: could not execute batch [Batch entry 0 insert into FAVOURITES_MAPPING (MOVIE_ID,WEBAPP_USER_ID) values (401,1) was aborted: ERROR: duplicate key value violates unique constraint "favourites_mapping_pkey"
+  Dettaglio: Key (movie_id, webapp_user_id)=(401, 1) already exists.  Call getNextException to see other errors in the batch.] [insert into FAVOURITES_MAPPING (MOVIE_ID,WEBAPP_USER_ID) values (?,?)]; SQL [insert into FAVOURITES_MAPPING (MOVIE_ID,WEBAPP_USER_ID) values (?,?)]; constraint [favourites_mapping_pkey]] with root cause
+org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "favourites_mapping_pkey"
+  Dettaglio: Key (movie_id, webapp_user_id)=(401, 1) already exists.
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2713)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2401)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:574)
+	at org.postgresql.jdbc.PgStatement.internalExecuteBatch(PgStatement.java:896)
+	at org.postgresql.jdbc.PgStatement.executeBatch(PgStatement.java:919)
+	at org.postgresql.jdbc.PgPreparedStatement.executeBatch(PgPreparedStatement.java:1685)
+	at com.zaxxer.hikari.pool.ProxyStatement.executeBatch(ProxyStatement.java:127)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeBatch(HikariProxyPreparedStatement.java)
+	at org.hibernate.engine.jdbc.batch.internal.BatchImpl.lambda$performExecution$2(BatchImpl.java:275)
+	at org.hibernate.engine.jdbc.mutation.internal.PreparedStatementGroupSingleTable.forEachStatement(PreparedStatementGroupSingleTable.java:59)
+	at org.hibernate.engine.jdbc.batch.internal.BatchImpl.performExecution(BatchImpl.java:262)
+	at org.hibernate.engine.jdbc.batch.internal.BatchImpl.execute(BatchImpl.java:241)
+	at org.hibernate.engine.jdbc.internal.JdbcCoordinatorImpl.executeBatch(JdbcCoordinatorImpl.java:188)
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:662)
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:502)
+	at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:358)
+	at org.hibernate.event.internal.DefaultFlushEventListener.onFlush(DefaultFlushEventListener.java:39)
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127)
+	at org.hibernate.internal.SessionImpl.doFlush(SessionImpl.java:1412)
+	at org.hibernate.internal.SessionImpl.managedFlush(SessionImpl.java:485)
+	at org.hibernate.internal.SessionImpl.flushBeforeTransactionCompletion(SessionImpl.java:2301)
+	at org.hibernate.internal.SessionImpl.beforeTransactionCompletion(SessionImpl.java:1966)
+	at org.hibernate.engine.jdbc.internal.JdbcCoordinatorImpl.beforeTransactionCompletion(JdbcCoordinatorImpl.java:439)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl.beforeCompletionCallback(JdbcResourceLocalTransactionCoordinatorImpl.java:169)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl$TransactionDriverControlImpl.commit(JdbcResourceLocalTransactionCoordinatorImpl.java:267)
+	at org.hibernate.engine.transaction.internal.TransactionImpl.commit(TransactionImpl.java:101)
+	at org.springframework.orm.jpa.JpaTransactionManager.doCommit(JpaTransactionManager.java:561)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:743)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:711)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:660)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:410)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:756)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708)
+	at com.luca.moviereviews.core.service.impl.WebappUserServiceImpl$$SpringCGLIB$$0.addFavourite(<generated>)
+	at com.luca.moviereviews.webapp.controllers.WebappUserController.addFavourite(WebappUserController.java:78)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1081)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	at org.springframework.web.servlet.FrameworkServlet.doPut(FrameworkServlet.java:925)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:593)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1740)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2024-02-12_21:30:12.312 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - select w1_0.id,w1_0.country,w1_0.email,w1_0.lastUpdateTime,w1_0.password,w1_0.registrationTime,w1_0.username from WebappUser w1_0 where w1_0.username=?
+2024-02-12_21:30:12.313 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - select m1_0.id,m1_0.duration,m1_0.genre,m1_0.href,m1_0.metascore,m1_0.metascoreNumRatings,m1_0.movieCast,m1_0.movieRatingCategory,m1_0.plot,m1_0.production,m1_0.regia,m1_0.star,m1_0.title,m1_0.userNumRatings,m1_0.userRating,m1_0.year from MOVIE_NEW m1_0 where m1_0.id=?
+2024-02-12_21:30:12.316 [http-nio-8080-exec-6] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.RuntimeException: film non trovato] with root cause
+java.lang.RuntimeException: film non trovato
+	at com.luca.moviereviews.core.service.impl.WebappUserServiceImpl.lambda$3(WebappUserServiceImpl.java:92)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at com.luca.moviereviews.core.service.impl.WebappUserServiceImpl.addFavourite(WebappUserServiceImpl.java:92)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:343)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:756)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:391)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:756)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708)
+	at com.luca.moviereviews.core.service.impl.WebappUserServiceImpl$$SpringCGLIB$$0.addFavourite(<generated>)
+	at com.luca.moviereviews.webapp.controllers.WebappUserController.addFavourite(WebappUserController.java:78)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1081)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	at org.springframework.web.servlet.FrameworkServlet.doPut(FrameworkServlet.java:925)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:593)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:166)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1740)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+2024-02-12_21:30:48.682 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - select w1_0.id,w1_0.country,w1_0.email,w1_0.lastUpdateTime,w1_0.password,w1_0.registrationTime,w1_0.username from WebappUser w1_0 where w1_0.username=?
+2024-02-12_21:30:48.684 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - select m1_0.id,m1_0.duration,m1_0.genre,m1_0.href,m1_0.metascore,m1_0.metascoreNumRatings,m1_0.movieCast,m1_0.movieRatingCategory,m1_0.plot,m1_0.production,m1_0.regia,m1_0.star,m1_0.title,m1_0.userNumRatings,m1_0.userRating,m1_0.year from MOVIE_NEW m1_0 where m1_0.id=?
+2024-02-12_21:30:48.687 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - insert into FAVOURITES_MAPPING (MOVIE_ID,WEBAPP_USER_ID) values (?,?)

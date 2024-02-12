@@ -5,18 +5,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
+
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
+
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.luca.moviereviews.core.model.MovieSearchParams;
-import com.luca.moviereviews.core.requests.MovieRequest;
 import com.luca.moviereviews.core.service.MovieService;
+import com.luca.moviereviews.responses.MovieResponse;
 import com.luca.moviereviews.responses.MovieSearchResponse;
 
 @RestController
@@ -24,15 +23,12 @@ import com.luca.moviereviews.responses.MovieSearchResponse;
 @RequestMapping(path = "/api/movies")
 public class MovieController {
 
-	// by default return the first page of movies ordered by popularity
-	// visible by alla users
+	
 
 	@Autowired
 	private MovieService movieService;
 
-	// update movie info if needed
-	// take movie info in request body
-	// only for admin
+	/*
 
 	@PatchMapping(path="/{id}")
 	
@@ -56,6 +52,15 @@ public class MovieController {
 	@DeleteMapping(path="/{id}")
 	public  ResponseEntity<?> deleteMovie(@PathVariable Long id){
 		return null;
+	}
+	*/
+	
+	@GetMapping(path="/{id}")
+	public ResponseEntity<MovieResponse> getMovie(@PathVariable Long id) {
+
+		MovieResponse movieResponse=movieService.getMovie(id);
+		ResponseEntity<MovieResponse> response=new ResponseEntity<>(movieResponse,HttpStatus.OK);
+		return response;
 	}
 	
 	@GetMapping

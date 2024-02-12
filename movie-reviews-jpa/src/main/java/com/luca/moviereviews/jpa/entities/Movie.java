@@ -38,7 +38,7 @@ public class Movie implements Serializable {
 
 	private String star;
 
-	private String cast;
+	private String movieCast;
 
 	private Integer year;
 	
@@ -62,9 +62,7 @@ public class Movie implements Serializable {
 	@OneToMany(targetEntity = MetacriticUserReview.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "movie")
 	private List<MetacriticUserReview> metacriticReviews = new ArrayList<>();
 
-	/*@ManyToMany(mappedBy = "favouriteList",fetch = FetchType.LAZY)
-	private List<WebappUser> users=new ArrayList<>();*/
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -144,14 +142,6 @@ public class Movie implements Serializable {
 		this.production = production;
 	}
 
-	public String getCast() {
-		return cast;
-	}
-
-	public void setCast(String cast) {
-		this.cast = cast;
-	}
-
 	public Integer getYear() {
 		return year;
 	}
@@ -211,6 +201,16 @@ public class Movie implements Serializable {
 	public void setMetacriticReviews(List<MetacriticUserReview> metacriticReviews) {
 		this.metacriticReviews = metacriticReviews;
 	}
+
+	public String getMovieCast() {
+		return movieCast;
+	}
+
+	public void setMovieCast(String movieCast) {
+		this.movieCast = movieCast;
+	}
+	
+	
 	
 	
 
