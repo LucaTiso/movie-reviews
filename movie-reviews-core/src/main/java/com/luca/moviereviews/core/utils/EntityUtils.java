@@ -6,10 +6,12 @@ import java.time.LocalDateTime;
 import com.luca.moviereviews.core.requests.MovieRequest;
 import com.luca.moviereviews.core.requests.WebappReviewRequest;
 import com.luca.moviereviews.core.requests.WebappUserRegistration;
+import com.luca.moviereviews.jpa.entities.FavouritesMapping;
 import com.luca.moviereviews.jpa.entities.MetacriticUserReview;
 import com.luca.moviereviews.jpa.entities.Movie;
+import com.luca.moviereviews.jpa.entities.SecurityUser;
 import com.luca.moviereviews.jpa.entities.WebappReview;
-import com.luca.moviereviews.jpa.entities.WebappUser;
+import com.luca.moviereviews.responses.FavouriteMappingResponse;
 import com.luca.moviereviews.responses.MetacriticReviewResponse;
 import com.luca.moviereviews.responses.MovieResponse;
 import com.luca.moviereviews.responses.WebappReviewResponse;
@@ -82,8 +84,8 @@ public class EntityUtils {
 
 	}
 
-	public static WebappUser dtoToEntity(WebappUserRegistration registration) {
-		WebappUser webappUser = new WebappUser();
+	public static SecurityUser dtoToEntity(WebappUserRegistration registration) {
+		SecurityUser webappUser = new SecurityUser();
 
 		webappUser.setCountry(registration.getCountry());
 		webappUser.setEmail(registration.getEmail());
@@ -95,7 +97,7 @@ public class EntityUtils {
 		return webappUser;
 	}
 
-	public static UserResponse entityToDto(WebappUser entity) {
+	public static UserResponse entityToDto(SecurityUser entity) {
 		UserResponse userResponse = new UserResponse();
 		userResponse.setUsername(entity.getUsername());
 		userResponse.setCountry(entity.getCountry());
@@ -144,6 +146,14 @@ public class EntityUtils {
 		reviewResponse.setUsername(metacriticuserReview.getUsername());
 
 		return reviewResponse;
+	}
+	
+	public static FavouriteMappingResponse entityToDto(FavouritesMapping entity){
+		FavouriteMappingResponse response=new FavouriteMappingResponse();
+		response.setPosition(0);
+		response.setMovieResponse(entityToDto(entity.getMovie()));
+		return response;
+		
 	}
 	
 	

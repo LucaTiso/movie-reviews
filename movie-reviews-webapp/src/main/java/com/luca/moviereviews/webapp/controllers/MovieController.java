@@ -23,8 +23,6 @@ import com.luca.moviereviews.responses.MovieSearchResponse;
 @RequestMapping(path = "/api/movies")
 public class MovieController {
 
-	
-
 	@Autowired
 	private MovieService movieService;
 

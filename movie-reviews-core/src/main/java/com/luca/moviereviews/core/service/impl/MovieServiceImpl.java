@@ -1,10 +1,12 @@
 package com.luca.moviereviews.core.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +18,8 @@ import com.luca.moviereviews.jpa.entities.Movie;
 import com.luca.moviereviews.jpa.repository.MovieRepository;
 import com.luca.moviereviews.responses.MovieResponse;
 import com.luca.moviereviews.responses.MovieSearchResponse;
+
+import jakarta.persistence.criteria.Predicate;
 
 @Service
 public class MovieServiceImpl implements MovieService {
@@ -108,19 +112,46 @@ public class MovieServiceImpl implements MovieService {
 		Sort sort = movieSearchParams.getSortDirection().toUpperCase().contentEquals("DESC")
 				? Sort.by(movieSearchParams.getSortBy()).descending()
 				: Sort.by(movieSearchParams.getSortBy()).ascending();
+		
+		
+		String title="harry";
+		String genre="thrillerzzz";
+		Integer year=1971;
+		
+		
+		Specification<Movie> spec = (root, query, cb) -> {
+			
+			List<Predicate> predicates = new ArrayList<>();
+			
+		    if (title != null && !title.isEmpty()) {
+                predicates.add(cb.like(cb.lower(root.get("title")), "%" + title.toLowerCase() + "%"));
+            }
+
+            if (year != null) {
+                predicates.add(cb.equal(root.get("year"), year));
+            }
+
+            if (genre != null && !genre.isEmpty()) {
+                predicates.add(cb.like(cb.lower(root.get("genre")), "%" + genre.toLowerCase() + "%"));
+            }
+            
+           
+
+            return cb.and(predicates.toArray(new Predicate[0]));
+		};
 
 		Page<Movie> moviePage = movieRepository
-				.findAll(PageRequest.of(movieSearchParams.getPageNumber(), movieSearchParams.getPageRecords(), sort));
+				.findAll(spec,PageRequest.of(movieSearchParams.getPageNumber()-1, movieSearchParams.getPageRecords(), sort));
 
 		List<MovieResponse> movieList = moviePage.getContent().stream().map(EntityUtils::entityToDto).toList();
 
 		MovieSearchResponse searchResponse = new MovieSearchResponse();
 		searchResponse.setMovieList(movieList);
-		searchResponse.setPageNumber(moviePage.getNumber());
+		searchResponse.setPageNumber(movieSearchParams.getPageNumber());
 		searchResponse.setTotalNumber(moviePage.getTotalElements());
 
 		// if first page this should be 0
-		Long numPreviousPage = movieSearchParams.getPageNumber() * movieSearchParams.getPageRecords() * 1l;
+		Long numPreviousPage = (movieSearchParams.getPageNumber()-1) * movieSearchParams.getPageRecords() * 1l;
 
 		searchResponse.setFromNum(numPreviousPage + 1);
 		searchResponse.setToNum(numPreviousPage + moviePage.getNumberOfElements());

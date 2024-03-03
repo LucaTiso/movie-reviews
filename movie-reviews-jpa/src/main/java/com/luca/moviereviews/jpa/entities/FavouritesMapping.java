@@ -1,46 +1,39 @@
 package com.luca.moviereviews.jpa.entities;
 
-
-import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.MapsId;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "FAVOURITES_MAPPING")
 public class FavouritesMapping {
 
-	@EmbeddedId
-	private FavouritesMappingId id;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "FAVOURITES_MAPPING_SEQ")
+	@SequenceGenerator(name = "FAVOURITES_MAPPING_SEQ", sequenceName = "FAVOURITES_MAPPING_SEQ", allocationSize = 5)
+	private Long id;
 
 	@ManyToOne
-	@MapsId("webappUserId")
 	@JoinColumn(name = "WEBAPP_USER_ID")
-	private WebappUser webappUser;
+	private SecurityUser webappUser;
 
 	@ManyToOne
-	@MapsId("movieId")
 	@JoinColumn(name = "MOVIE_ID")
 	private Movie movie;
 	
-	public FavouritesMapping() {
-		
-	}
-
-	public FavouritesMapping(FavouritesMappingId id) {
-		this.id = id;
-	}
-
-	public WebappUser getWebappUser() {
+	
+	public SecurityUser getWebappUser() {
 		return webappUser;
 	}
 
-	public void setWebappUser(WebappUser webappUser) {
-
+	public void setWebappUser(SecurityUser webappUser) {
 		this.webappUser = webappUser;
-
 	}
 
 	public Movie getMovie() {
@@ -52,12 +45,14 @@ public class FavouritesMapping {
 		this.movie = movie;
 	}
 
-	public FavouritesMappingId getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(FavouritesMappingId id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
+
+	
 
 }

@@ -35,9 +35,9 @@ public class WebappReview {
 	@Column(name="movie_id")
 	private Long movieId;
 	
-	@ManyToOne(targetEntity = WebappUser.class, fetch = FetchType.EAGER)
+	@ManyToOne(targetEntity = SecurityUser.class, fetch = FetchType.LAZY)
 	@JoinColumn(name="webapp_user_id",referencedColumnName="id",nullable=false)
-	private WebappUser webappUser;
+	private SecurityUser webappUser;
 	
 	@ManyToOne(targetEntity = Movie.class, fetch = FetchType.LAZY)
 	@JoinColumn(name="movie_id",referencedColumnName="id",insertable=false,updatable=false,nullable=false)
@@ -84,14 +84,6 @@ public class WebappReview {
 		this.reviewTime = reviewTime;
 	}
 
-	public WebappUser getWebappUser() {
-		return webappUser;
-	}
-
-	public void setWebappUser(WebappUser webappUser) {
-		this.webappUser = webappUser;
-	}
-
 	public Movie getMovie() {
 		return movie;
 	}
@@ -115,5 +107,15 @@ public class WebappReview {
 	public void setUsername(String username) {
 		this.username = username;
 	}
+
+	public SecurityUser getWebappUser() {
+		return webappUser;
+	}
+
+	public void setWebappUser(SecurityUser webappUser) {
+		this.webappUser = webappUser;
+	}
+	
+	
 	
 }

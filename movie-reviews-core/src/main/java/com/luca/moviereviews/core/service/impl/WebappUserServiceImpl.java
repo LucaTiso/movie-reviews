@@ -1,61 +1,45 @@
 package com.luca.moviereviews.core.service.impl;
 
+
+import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.luca.moviereviews.core.requests.WebappUserLogin;
-import com.luca.moviereviews.core.requests.WebappUserRegistration;
+
 import com.luca.moviereviews.core.requests.WebappUserRequest;
 import com.luca.moviereviews.core.service.WebappUserService;
+import com.luca.moviereviews.core.utils.CsvUtils;
 import com.luca.moviereviews.core.utils.EntityUtils;
 import com.luca.moviereviews.jpa.entities.FavouritesMapping;
-import com.luca.moviereviews.jpa.entities.FavouritesMappingId;
 import com.luca.moviereviews.jpa.entities.Movie;
-import com.luca.moviereviews.jpa.entities.WebappUser;
+import com.luca.moviereviews.jpa.entities.SecurityUser;
 import com.luca.moviereviews.jpa.repository.FavouritesRepository;
 import com.luca.moviereviews.jpa.repository.MovieRepository;
-import com.luca.moviereviews.jpa.repository.WebappUserRepository;
+import com.luca.moviereviews.jpa.repository.SecurityUserRepository;
+import com.luca.moviereviews.responses.FavouriteMappingResponse;
 import com.luca.moviereviews.responses.UserResponse;
 
 @Service
 public class WebappUserServiceImpl implements WebappUserService {
 
-	private final WebappUserRepository webappUserRepository;
+	private final SecurityUserRepository securityUserRepository;
 
 	private final MovieRepository movieRepository;
 
 	private final FavouritesRepository favouritesRepository;
 
-	public WebappUserServiceImpl(WebappUserRepository webappUserRepository, MovieRepository movieRepository,
+	public WebappUserServiceImpl(SecurityUserRepository securityUserRepository, MovieRepository movieRepository,
 			FavouritesRepository favouritesRepository) {
-		this.webappUserRepository = webappUserRepository;
+		this.securityUserRepository = securityUserRepository;
 		this.movieRepository = movieRepository;
 		this.favouritesRepository = favouritesRepository;
 	}
 
-	@Override
-	@Transactional
-	public void registration(WebappUserRegistration registration) {
-
-		WebappUser user = EntityUtils.dtoToEntity(registration);
-		webappUserRepository.save(user);
-
-	}
-
-	@Override
-	@Transactional
-	public UserResponse login(WebappUserLogin login) {
-		UserResponse response = new UserResponse();
-
-		response = webappUserRepository.findByUsername(login.getUsername())
-				.filter(u -> u.getPassword().contentEquals(login.getPassword())).map(EntityUtils::entityToDto)
-				.orElse(null);
-
-		return response;
-	}
 
 	@Override
 	@Transactional
@@ -63,7 +47,7 @@ public class WebappUserServiceImpl implements WebappUserService {
 
 		UserResponse userResponse = null;
 
-		WebappUser user = webappUserRepository.findByUsername(webappUserReqest.getUsername()).orElse(null);
+		SecurityUser user = securityUserRepository.findByUsername(webappUserReqest.getUsername()).orElse(null);
 		if (user != null) {
 			if (webappUserReqest.getCountry() != null) {
 				user.setCountry(webappUserReqest.getCountry());
@@ -86,56 +70,67 @@ public class WebappUserServiceImpl implements WebappUserService {
 	@Transactional
 	public void addFavourite(Long movieId, String username) {
 
-		WebappUser webappuser = webappUserRepository.findByUsername(username)
+		
+		
+		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		
+		SecurityUser webappuser = securityUserRepository.findByUsername(userDetails.getUsername())
 				.orElseThrow(() -> new RuntimeException("utente non trovato"));
 
 		Movie movie = movieRepository.findById(movieId).orElseThrow(() -> new RuntimeException("film non trovato"));
 
-		// webappUserRepository.addFavourite(webappuser.getId(), movie.getId());
-
-		FavouritesMapping mapping = new FavouritesMapping(new FavouritesMappingId(webappuser.getId(), movie.getId()));
+		FavouritesMapping mapping = new FavouritesMapping();
 		mapping.setMovie(movie);
 		mapping.setWebappUser(webappuser);
-
-		webappUserRepository.addFavourite(webappuser, movie);
+		favouritesRepository.save(mapping);
 
 	}
 
+
 	@Override
 	@Transactional
-	public void removeFromFavourites(Long movieId, String username) {
-
-		WebappUser webappuser = webappUserRepository.findByUsername(username)
+	public void removeFromFavourites(List<Long> fovouritesIds, String username) {
+		
+		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		SecurityUser webappuser = securityUserRepository.findByUsername(userDetails.getUsername())
 				.orElseThrow(() -> new RuntimeException("utente non trovato"));
 
-		webappUserRepository.deleteUserFavourite(webappuser.getId(), movieId);
+		securityUserRepository.deleteUserFavourite(webappuser.getId(), fovouritesIds);
 
 	}
 
 	@Override
-	@Transactional
-	public void removeFromFavourites(List<Long> movieIdList, String username) {
-
-		WebappUser webappuser = webappUserRepository.findByUsername(username)
-				.orElseThrow(() -> new RuntimeException("utente non trovato"));
-
-		webappUserRepository.deleteUserFavourite(webappuser.getId(), movieIdList);
-
-	}
-
-	@Override
-	@Transactional
-	public void searchFavourites(String username) {
-		WebappUser webappuser = webappUserRepository.findByUsername(username)
+	@Transactional(readOnly=true)
+	public List<FavouriteMappingResponse> searchFavourites(String username) {
+		
+		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		SecurityUser webappuser = securityUserRepository.findByUsername(userDetails.getUsername())
 				.orElseThrow(() -> new RuntimeException("utente non trovato"));
 
 		// favouritesRepository.findBy
-		List<FavouritesMapping> mappingList = favouritesRepository.findByUserId(webappuser.getId());
+		List<FavouriteMappingResponse> mappingList = favouritesRepository.findByUserId(webappuser.getId())
+				.stream().map(EntityUtils::entityToDto).toList();
 		
-		for(FavouritesMapping m:mappingList) {
-			System.out.println(m.getMovie());
-		}
-
+		return mappingList;
+		
 	}
 
+
+	@Override
+	public void downloadFavourites(PrintWriter printWriter) {
+		List<FavouriteMappingResponse> retrievedList=this.searchFavourites("totti");
+		
+		StringBuilder sb=new StringBuilder("");
+		
+		sb.append("Position,Title,URL,Production,Star,Cast,Year,Genres,Regia,Duration,Metacritic user rating,Metacritic user num ratings,Metascore,Metascore num ratings,Movie Category\n");
+		retrievedList.forEach(m->{
+			sb.append(m.getPosition()+","+CsvUtils.escape(m.getMovieResponse().getTitle())+","+CsvUtils.escape(m.getMovieResponse().getHref())+","+CsvUtils.escape(m.getMovieResponse().getProduction())+","+CsvUtils.escape(m.getMovieResponse().getStar())+","+
+					CsvUtils.escape(m.getMovieResponse().getCast())+","+m.getMovieResponse().getYear()+","+CsvUtils.escape(m.getMovieResponse().getGenre())+","+CsvUtils.escape(m.getMovieResponse().getRegia())+","+
+					m.getMovieResponse().getDuration()+","+m.getMovieResponse().getUserRating()+","+m.getMovieResponse().getUserNumRatings()+","+m.getMovieResponse().getMetascore()+","+
+					m.getMovieResponse().getMetascoreNumRatings()+","+CsvUtils.escape(m.getMovieResponse().getMovieRatingCategory())+"\n");
+		});
+	
+		printWriter.write(sb.toString());
+		
+	}
 }

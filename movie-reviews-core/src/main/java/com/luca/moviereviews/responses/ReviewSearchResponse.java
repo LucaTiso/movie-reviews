@@ -2,9 +2,9 @@ package com.luca.moviereviews.responses;
 
 import java.util.List;
 
-public class ReviewSearchResponse {
+public class ReviewSearchResponse<T> {
 
-	private List<WebappReviewResponse> reviewList;
+	private List<T> reviewList;
 
 	private int pageNumber;
 
@@ -14,11 +14,11 @@ public class ReviewSearchResponse {
 
 	private Long toNum;
 
-	public List<WebappReviewResponse> getReviewList() {
+	public List<T> getReviewList() {
 		return reviewList;
 	}
 
-	public void setReviewList(List<WebappReviewResponse> reviewList) {
+	public void setReviewList(List<T> reviewList) {
 		this.reviewList = reviewList;
 	}
 

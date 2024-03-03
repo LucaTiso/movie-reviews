@@ -15,6 +15,6 @@ public interface WebappReviewService {
 	
 	public WebappReviewResponse getReview(Long movieId, Long reviewId);
 
-	public ReviewSearchResponse getReviews(Long movieId, ReviewSearchParams reviewSearchParams);
+	public ReviewSearchResponse<WebappReviewResponse> getReviews(Long movieId, ReviewSearchParams reviewSearchParams);
 
 }
