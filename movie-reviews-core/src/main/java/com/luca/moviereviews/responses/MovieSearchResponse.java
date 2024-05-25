@@ -2,9 +2,11 @@ package com.luca.moviereviews.responses;
 
 import java.util.List;
 
+import com.luca.moviereviews.responses.dto.MovieSearchDto;
+
 public class MovieSearchResponse {
 	
-	private List<MovieResponse> movieList;
+	private List<MovieSearchDto> movieList;
 	
 	private int pageNumber;
 	
@@ -16,11 +18,11 @@ public class MovieSearchResponse {
 	
 	
 
-	public List<MovieResponse> getMovieList() {
+	public List<MovieSearchDto> getMovieList() {
 		return movieList;
 	}
 
-	public void setMovieList(List<MovieResponse> movieList) {
+	public void setMovieList(List<MovieSearchDto> movieList) {
 		this.movieList = movieList;
 	}
 

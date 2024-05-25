@@ -1,16 +1,17 @@
 package com.luca.moviereviews.core.security;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@Data
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
 public class AuthenticationResponse {
 	
 	private String token;
+	
+	private String refreshToken;
 
 }

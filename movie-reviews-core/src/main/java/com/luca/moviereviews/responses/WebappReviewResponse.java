@@ -18,6 +18,8 @@ public class WebappReviewResponse {
 	private LocalDateTime reviewTime;
 	
 	private Long reviewerId;
+	
+	private String title;
 
 	public Long getId() {
 		return id;
@@ -75,6 +77,13 @@ public class WebappReviewResponse {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	
-	
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
 }

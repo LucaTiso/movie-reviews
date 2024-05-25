@@ -55,8 +55,8 @@ public class SecurityUser {
 	@Column(name="LAST_UPDATE_TIME")
 	private LocalDateTime lastUpdateTime;
 	
-	@Column(name="ACTIVE")
-	private Boolean active;
+	@Column(name="ENABLED")
+	private Boolean enabled;
 	
 	@OneToMany(targetEntity = WebappReview.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "webappUser")
 	private List<WebappReview> webappReviews = new ArrayList<>();
@@ -147,12 +147,12 @@ public class SecurityUser {
 		this.webappReviews = webappReviews;
 	}
 
-	public Boolean getActive() {
-		return active;
+	public Boolean getEnabled() {
+		return enabled;
 	}
 
-	public void setActive(Boolean active) {
-		this.active = active;
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
 	}
-
+	
 }

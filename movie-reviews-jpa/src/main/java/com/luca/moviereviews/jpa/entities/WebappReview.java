@@ -26,8 +26,6 @@ public class WebappReview {
 	
 	private int rating;
 	
-	private String username;
-	
 	private LocalDate reviewDate;
 	
 	private LocalDateTime reviewTime;
@@ -98,14 +96,6 @@ public class WebappReview {
 
 	public void setMovieId(Long movieId) {
 		this.movieId = movieId;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
 	}
 
 	public SecurityUser getWebappUser() {

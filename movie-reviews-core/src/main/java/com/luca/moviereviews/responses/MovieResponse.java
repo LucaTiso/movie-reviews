@@ -2,7 +2,7 @@ package com.luca.moviereviews.responses;
 
 public class MovieResponse {
 	
-private String title;
+	private String title;
 
 	private Long id;
 	
@@ -11,8 +11,6 @@ private String title;
 	private Integer duration;
 
 	private String regia;
-
-
 
 	private String star;
 
@@ -35,6 +33,10 @@ private String title;
 	private String movieRatingCategory;
 	
 	private String production;
+	
+	private boolean favourite;
+	
+	private Long reviewId;
 
 	public String getTitle() {
 		return title;
@@ -167,5 +169,22 @@ private String title;
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+	public boolean isFavourite() {
+		return favourite;
+	}
+
+	public void setFavourite(boolean favourite) {
+		this.favourite = favourite;
+	}
+
+	public Long getReviewId() {
+		return reviewId;
+	}
+
+	public void setReviewId(Long reviewId) {
+		this.reviewId = reviewId;
+	}
+
 
 }

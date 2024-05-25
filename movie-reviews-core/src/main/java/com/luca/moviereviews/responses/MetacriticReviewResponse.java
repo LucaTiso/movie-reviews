@@ -13,6 +13,8 @@ public class MetacriticReviewResponse {
 	private Integer rating;
 
 	private LocalDate reviewDate;
+	
+	private String title;
 
 	public Long getId() {
 		return id;
@@ -53,8 +55,14 @@ public class MetacriticReviewResponse {
 	public void setReviewDate(LocalDate reviewDate) {
 		this.reviewDate = reviewDate;
 	}
-	
-	
 
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
 
 }

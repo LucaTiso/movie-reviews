@@ -14,6 +14,8 @@ public interface MovieService {
 	MovieSearchResponse getMovies(MovieSearchParams movieSearchParams);
 	
 	
+	MovieSearchResponse getRecentMovies();
+	
 	MovieResponse getMovie(Long id);
 
 }

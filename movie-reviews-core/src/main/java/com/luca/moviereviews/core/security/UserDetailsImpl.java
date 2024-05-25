@@ -36,7 +36,7 @@ public class UserDetailsImpl implements UserDetails {
 
 	private String password;
 	
-	private Boolean active;
+	private Boolean enabled;
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -73,8 +73,7 @@ public class UserDetailsImpl implements UserDetails {
 
 	@Override
 	public boolean isEnabled() {
-		// TODO Auto-generated method stub
-		return true;
+		return enabled;
 	}
 
 }

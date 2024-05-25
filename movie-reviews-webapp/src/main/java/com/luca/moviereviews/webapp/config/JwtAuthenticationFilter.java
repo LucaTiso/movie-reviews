@@ -2,6 +2,7 @@ package com.luca.moviereviews.webapp.config;
 
 import java.io.IOException;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,6 +13,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.luca.moviereviews.core.security.JwtService;
 
+import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -31,11 +33,18 @@ private final JwtService jwtService;
 	protected void doFilterInternal(@NonNull HttpServletRequest request,@NonNull HttpServletResponse response,@NonNull FilterChain filterChain)
 			throws ServletException, IOException {
 		
-		final String authHeader = request.getHeader("Authorization");
+		// se il path è /auth non dobbiamo eseguire le varie operazioni del Jwt filter
+		if(request.getServletPath().contains("api/auth")){
+			filterChain.doFilter(request, response);
+			return;
+		}
+		
+		final String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
 		final String jwt;
 		final String username;
 		System.out.println("parte il filtro");
 		
+		// se non c'è il token o non inizia con bearer non continuo con le operazioni del filterChain
 		if(authHeader==null || !authHeader.startsWith("Bearer ")) {
 			System.out.println("Non inizia con bearer");
 			filterChain.doFilter(request, response);
@@ -44,9 +53,16 @@ private final JwtService jwtService;
 		
 		jwt=authHeader.substring(7);
 		
-		username=jwtService.extractUsername(jwt);
+		try {
+			
+			username=jwtService.extractUsername(jwt);
+		}catch(ExpiredJwtException exception) {
+			response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+			response.getWriter().write("EXPIRED_TOKEN");
+			return;
+		}
 		
-		
+		// controllo se username è diverso da null e se l'utente non è già autenticato?
 		if(username!=null && SecurityContextHolder.getContext().getAuthentication()==null) {
 			
 			System.out.println("userEmail not null");
@@ -60,7 +76,7 @@ private final JwtService jwtService;
 				System.out.println("token valido");
 				System.out.println("username: "+userDetails.getUsername());
 				
-				
+				// questo oggetto sarà utilizzato da spring per aggiornare il SecurityContextHolder
 				UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
 						userDetails,
 						null,

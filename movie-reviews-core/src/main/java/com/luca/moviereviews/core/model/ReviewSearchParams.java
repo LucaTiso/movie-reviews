@@ -1,5 +1,7 @@
 package com.luca.moviereviews.core.model;
 
+import java.time.LocalDate;
+
 public class ReviewSearchParams {
 
 	private Integer pageNumber;
@@ -9,6 +11,20 @@ public class ReviewSearchParams {
 	private String sortBy;
 
 	private String sortDirection;
+	
+	private String username;
+	
+	private String text;
+	
+	private Integer minUserRating;
+	
+	private Integer maxUserRating;
+	
+	private LocalDate fromReviewDate;
+	
+	private LocalDate toReviewDate;
+	
+	private String title;
 	
 	public ReviewSearchParams(Integer pageNumber, Integer pageRecords,String sortBy,String sortDirection) {
 		this.pageNumber = pageNumber;
@@ -49,4 +65,60 @@ public class ReviewSearchParams {
 		this.sortDirection = sortDirection;
 	}
 
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public Integer getMinUserRating() {
+		return minUserRating;
+	}
+
+	public void setMinUserRating(Integer minUserRating) {
+		this.minUserRating = minUserRating;
+	}
+
+	public Integer getMaxUserRating() {
+		return maxUserRating;
+	}
+
+	public void setMaxUserRating(Integer maxUserRating) {
+		this.maxUserRating = maxUserRating;
+	}
+
+	public LocalDate getFromReviewDate() {
+		return fromReviewDate;
+	}
+
+	public void setFromReviewDate(LocalDate fromReviewDate) {
+		this.fromReviewDate = fromReviewDate;
+	}
+
+	public LocalDate getToReviewDate() {
+		return toReviewDate;
+	}
+
+	public void setToReviewDate(LocalDate toReviewDate) {
+		this.toReviewDate = toReviewDate;
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
 }

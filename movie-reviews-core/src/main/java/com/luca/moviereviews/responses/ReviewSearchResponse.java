@@ -5,6 +5,8 @@ import java.util.List;
 public class ReviewSearchResponse<T> {
 
 	private List<T> reviewList;
+	
+	private String title;
 
 	private int pageNumber;
 
@@ -13,6 +15,8 @@ public class ReviewSearchResponse<T> {
 	private Long fromNum;
 
 	private Long toNum;
+	
+	private Long reviewId;
 
 	public List<T> getReviewList() {
 		return reviewList;
@@ -53,5 +57,22 @@ public class ReviewSearchResponse<T> {
 	public void setToNum(Long toNum) {
 		this.toNum = toNum;
 	}
+
+	public Long getReviewId() {
+		return reviewId;
+	}
+
+	public void setReviewId(Long reviewId) {
+		this.reviewId = reviewId;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	
+
 }

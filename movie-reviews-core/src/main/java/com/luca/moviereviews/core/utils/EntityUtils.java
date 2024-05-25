@@ -9,13 +9,17 @@ import com.luca.moviereviews.core.requests.WebappUserRegistration;
 import com.luca.moviereviews.jpa.entities.FavouritesMapping;
 import com.luca.moviereviews.jpa.entities.MetacriticUserReview;
 import com.luca.moviereviews.jpa.entities.Movie;
+import com.luca.moviereviews.jpa.entities.MovieSearch;
 import com.luca.moviereviews.jpa.entities.SecurityUser;
 import com.luca.moviereviews.jpa.entities.WebappReview;
 import com.luca.moviereviews.responses.FavouriteMappingResponse;
+import com.luca.moviereviews.responses.MetacriticMovieReviewResponse;
 import com.luca.moviereviews.responses.MetacriticReviewResponse;
 import com.luca.moviereviews.responses.MovieResponse;
 import com.luca.moviereviews.responses.WebappReviewResponse;
+import com.luca.moviereviews.responses.dto.MovieSearchDto;
 import com.luca.moviereviews.responses.UserResponse;
+import com.luca.moviereviews.responses.WebappMovieReviewResponse;
 
 public class EntityUtils {
 
@@ -83,6 +87,22 @@ public class EntityUtils {
 		return movieResponse;
 
 	}
+	
+	public static MovieSearchDto entityToDto(MovieSearch entity) {
+		MovieSearchDto dto=new MovieSearchDto();
+		dto.setDuration(entity.getDuration());
+		dto.setId(entity.getId());
+		dto.setHref(entity.getHref());
+		
+		dto.setMetascore(entity.getMetascore());
+		dto.setTitle(entity.getTitle());
+		dto.setUserNumRatings(entity.getUserNumRatings());
+		dto.setMetascoreNumRatings(entity.getMetascoreNumRatings());
+		dto.setUserRating(entity.getUserRating());
+		dto.setYear(entity.getYear());
+		return dto;
+		
+	}
 
 	public static SecurityUser dtoToEntity(WebappUserRegistration registration) {
 		SecurityUser webappUser = new SecurityUser();
@@ -102,6 +122,10 @@ public class EntityUtils {
 		userResponse.setUsername(entity.getUsername());
 		userResponse.setCountry(entity.getCountry());
 		userResponse.setEmail(entity.getEmail());
+		userResponse.setFirstName(entity.getFirstName());
+		userResponse.setLastName(entity.getLastName());
+		userResponse.setRegistrationTime(entity.getRegistrationTime());
+		
 		return userResponse;
 
 	}
@@ -114,8 +138,7 @@ public class EntityUtils {
 		webappReview.setReviewDate(LocalDate.now());
 		webappReview.setReviewTime(LocalDateTime.now());
 		webappReview.setText(webappReviewRequest.getText());
-		webappReview.setUsername(webappReviewRequest.getUsername());
-
+		
 		return webappReview;
 	}
 
@@ -129,8 +152,26 @@ public class EntityUtils {
 		reviewResponse.setText(webappReview.getText());
 	
 		reviewResponse.setRating(webappReview.getRating());
-		reviewResponse.setUsername(webappReview.getUsername());
+		reviewResponse.setUsername(webappReview.getWebappUser().getUsername());
 		reviewResponse.setReviewerId(webappReview.getWebappUser().getId());
+
+		return reviewResponse;
+	}
+	
+	public static WebappMovieReviewResponse entityToWebappMovieReviewResponse(WebappReview webappReview) {
+
+		WebappMovieReviewResponse reviewResponse = new WebappMovieReviewResponse();
+
+		reviewResponse.setId(webappReview.getId());
+		reviewResponse.setReviewDate(webappReview.getReviewDate());
+		reviewResponse.setReviewTime(webappReview.getReviewTime());
+		reviewResponse.setText(webappReview.getText());
+	
+		reviewResponse.setRating(webappReview.getRating());
+		reviewResponse.setUsername(webappReview.getWebappUser().getUsername());
+		reviewResponse.setReviewerId(webappReview.getWebappUser().getId());
+		reviewResponse.setMovieTitle(webappReview.getMovie().getTitle());
+		reviewResponse.setMovieId(webappReview.getMovie().getId());
 
 		return reviewResponse;
 	}
@@ -148,14 +189,29 @@ public class EntityUtils {
 		return reviewResponse;
 	}
 	
+	public static MetacriticMovieReviewResponse entityToMetacriticMovieReviewResponse(MetacriticUserReview metacriticuserReview) {
+
+		MetacriticMovieReviewResponse reviewResponse = new MetacriticMovieReviewResponse();
+
+		reviewResponse.setId(metacriticuserReview.getId());
+		reviewResponse.setRating(metacriticuserReview.getRating());
+		reviewResponse.setReviewDate(metacriticuserReview.getReviewDate());
+		reviewResponse.setText(metacriticuserReview.getText());
+		reviewResponse.setUsername(metacriticuserReview.getUsername());
+		reviewResponse.setMovieId(metacriticuserReview.getMovie().getId());
+		reviewResponse.setMovieTitle(metacriticuserReview.getMovie().getTitle());
+
+		return reviewResponse;
+	}
+	
 	public static FavouriteMappingResponse entityToDto(FavouritesMapping entity){
 		FavouriteMappingResponse response=new FavouriteMappingResponse();
 		response.setPosition(0);
 		response.setMovieResponse(entityToDto(entity.getMovie()));
+		response.setId(entity.getId());
 		return response;
 		
 	}
-	
 	
 
 }

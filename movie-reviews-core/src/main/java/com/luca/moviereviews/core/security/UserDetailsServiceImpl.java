@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.luca.moviereviews.jpa.entities.SecurityUser;
 import com.luca.moviereviews.jpa.repository.SecurityUserRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 	
@@ -18,6 +20,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	}
 
 	@Override
+	@Transactional
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		SecurityUser securityUser=repository.findByUsername(username).orElseThrow(()-> new UsernameNotFoundException("user not found"));
 		
@@ -30,7 +33,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		userDetails.setCountry(securityUser.getCountry());
 		userDetails.setFirstName(securityUser.getFirstName());
 		userDetails.setLastName(securityUser.getLastName());
-		userDetails.setActive(securityUser.getActive());
+		userDetails.setEnabled(securityUser.getEnabled());
 		
 		return userDetails;
 	}

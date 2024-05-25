@@ -55,6 +55,8 @@ public class Movie implements Serializable {
 	private int metascoreNumRatings;
 	
 	private String movieRatingCategory;
+	
+
 
 	@OneToMany(targetEntity = WebappReview.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "movie")
 	private List<WebappReview> webappReviews = new ArrayList<>();

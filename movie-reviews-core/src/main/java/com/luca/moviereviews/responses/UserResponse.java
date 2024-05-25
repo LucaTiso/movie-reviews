@@ -1,5 +1,8 @@
 package com.luca.moviereviews.responses;
 
+
+import java.time.LocalDateTime;
+
 public class UserResponse {
 	
 	private String username;
@@ -7,6 +10,12 @@ public class UserResponse {
 	private String email;
 	
 	private String country;
+	
+	private String firstName;
+	
+	private String lastName;
+	
+	private LocalDateTime registrationTime;
 
 	public String getUsername() {
 		return username;
@@ -31,5 +40,30 @@ public class UserResponse {
 	public void setCountry(String country) {
 		this.country = country;
 	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public LocalDateTime getRegistrationTime() {
+		return registrationTime;
+	}
+
+	public void setRegistrationTime(LocalDateTime registrationTime) {
+		this.registrationTime = registrationTime;
+	}
+
 	
 }
