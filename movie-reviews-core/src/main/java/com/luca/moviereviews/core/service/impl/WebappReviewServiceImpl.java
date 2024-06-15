@@ -167,7 +167,11 @@ public class WebappReviewServiceImpl implements WebappReviewService {
 		// if first page this should be 0
 		Long numPreviousPage = (reviewSearchParams.getPageNumber()-1) * reviewSearchParams.getPageRecords() * 1l;
 
-		searchResponse.setFromNum(numPreviousPage + 1);
+		if(reviewPage.getTotalElements()>0) {
+			searchResponse.setFromNum(numPreviousPage + 1);
+		}else {
+			searchResponse.setFromNum(0l);
+		}
 		searchResponse.setToNum(numPreviousPage + reviewPage.getNumberOfElements());
 		
 		
@@ -272,7 +276,11 @@ public class WebappReviewServiceImpl implements WebappReviewService {
 		// if first page this should be 0
 		Long numPreviousPage = (reviewSearchParams.getPageNumber()-1) * reviewSearchParams.getPageRecords() * 1l;
 
-		searchResponse.setFromNum(numPreviousPage + 1);
+		if(reviewPage.getTotalElements()>0) {
+			searchResponse.setFromNum(numPreviousPage + 1);
+		}else {
+			searchResponse.setFromNum(0l);
+		}
 		searchResponse.setToNum(numPreviousPage + reviewPage.getNumberOfElements());
 
 		return searchResponse;

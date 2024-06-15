@@ -1,5 +1,8 @@
 package com.luca.moviereviews.core.service.impl;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -169,7 +172,7 @@ public class MovieServiceImpl implements MovieService {
 			}
 
 			if (movieSearchParams.getMaxMetascore() != null) {
-				predicates.add(cb.lessThanOrEqualTo(root.get("metascore"), movieSearchParams.getMinMetascore()));
+				predicates.add(cb.lessThanOrEqualTo(root.get("metascore"), movieSearchParams.getMaxMetascore()));
 			}
 			
 			if (movieSearchParams.getMinUserNumRating() != null) {
@@ -244,7 +247,12 @@ public class MovieServiceImpl implements MovieService {
 		// if first page this should be 0
 		Long numPreviousPage = (movieSearchParams.getPageNumber() - 1) * movieSearchParams.getPageRecords() * 1l;
 
-		searchResponse.setFromNum(numPreviousPage + 1);
+		if(moviePage.getTotalElements()>0) {
+			searchResponse.setFromNum(numPreviousPage + 1);
+		}else {
+			searchResponse.setFromNum(0l);
+		}
+		
 		searchResponse.setToNum(numPreviousPage + moviePage.getNumberOfElements());
 
 		return searchResponse;
@@ -281,6 +289,12 @@ public class MovieServiceImpl implements MovieService {
 		
 		Sort sort = Sort.by("metascore").descending().and(Sort.by("metascoreNumRatings").descending());
 	
+		LocalDateTime dt=LocalDateTime.of(LocalDate.now().withDayOfMonth(1),LocalTime.MIDNIGHT);
+		
+		
+		System.out.println("data locale");
+		System.out.println(dt);
+		
 		
 		Specification<MovieSearch> spec = (root, query, cb) -> {
 
@@ -288,7 +302,10 @@ public class MovieServiceImpl implements MovieService {
 
 			predicates.add(cb.isNotNull(root.get("metascore")));
 			
-
+			predicates.add(cb.greaterThanOrEqualTo(root.get("insertionTimestamp"),dt));
+			
+			//predicates.add(cb.)
+			
 			return cb.and(predicates.toArray(new Predicate[0]));
 		};
 

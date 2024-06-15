@@ -31,6 +31,7 @@ import com.luca.moviereviews.jpa.enums.Role;
 import com.luca.moviereviews.jpa.repository.SecurityUserRepository;
 import com.luca.moviereviews.jpa.repository.TokenRepository;
 
+import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -60,6 +61,7 @@ public class AuthenticationService {
 		var user = UserDetailsImpl.builder().firstName(request.getFirstname()).lastName(request.getLastname())
 				.email(request.getEmail()).password(passwordEncoder.encode(request.getPassword())).username(request.getUsername())
 				.role(Role.USER)
+				.country(request.getCountry())
 				.enabled(false)
 				.build();
 		
@@ -73,6 +75,8 @@ public class AuthenticationService {
 		securityUser.setPassword(user.getPassword());
 		securityUser.setRole(user.getRole());
 		securityUser.setEnabled(user.isEnabled());
+		securityUser.setRegistrationTime(LocalDateTime.now());
+		securityUser.setLastUpdateTime(LocalDateTime.now());
 		
 		// aggiungere enabled a false nel salvataggio
 		
@@ -158,9 +162,15 @@ public class AuthenticationService {
 		
 		refreshToken=authHeader.substring(7);
 		
-		username=jwtService.extractUsername(refreshToken);
+		try {
+			username=jwtService.extractUsername(refreshToken);
+		}catch(ExpiredJwtException exception) {
+			response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+			response.getWriter().write("EXPIRED_TOKEN");
+			return;
+		}
 		
-		
+
 		if(username!=null) {
 			
 			SecurityUser securityUser=this.securityUserRepository.findByUsername(username).orElseThrow();

@@ -1,10 +1,12 @@
 package com.luca.moviereviews.jpa.entities;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -55,6 +57,9 @@ public class Movie implements Serializable {
 	private int metascoreNumRatings;
 	
 	private String movieRatingCategory;
+	
+	@Column(name="INSERTION_TIMESTAMP")
+	private LocalDateTime insertionTimestamp;
 	
 
 
@@ -211,9 +216,10 @@ public class Movie implements Serializable {
 	public void setMovieCast(String movieCast) {
 		this.movieCast = movieCast;
 	}
-	
-	
-	
-	
 
+	public LocalDateTime getInsertionTimestamp() {
+		return insertionTimestamp;
+	}
+
+	
 }

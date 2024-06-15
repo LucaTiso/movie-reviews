@@ -21,9 +21,9 @@ public class JwtService {
 	
 	private static final String SECRET_KEY = "c815c44f5b497cd677fad413488ce7859cb6d52be6ae3544c2a8c6a54b76aa72";
 	
-	private static final long ACCESS_TOKEN_EXPIRATION = 3_000_000l;
+	private static final long ACCESS_TOKEN_EXPIRATION = 300_000l;
 	
-	private static final long REFRESH_TOKEN_EXPIRATION = 600_000_000l;
+	private static final long REFRESH_TOKEN_EXPIRATION = 36_000_000l;
 
 	public String extractUsername(String token) {
 		return extractClaim(token, Claims::getSubject);
@@ -62,7 +62,12 @@ public class JwtService {
 	}
 	
 	private boolean isTokenExpired(String token) {
-		return extractExpiration(token).before(new Date());
+		
+		Date expirationDate=extractExpiration(token);
+		
+		System.out.println(expirationDate);
+		
+		return expirationDate.before(new Date());
 	}
 	
 	private Date extractExpiration(String token) {

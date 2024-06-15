@@ -36,8 +36,8 @@ public class RegisterRequest {
 	@Email(message="email is not formatted")
 	private String email;
 	
-	@NotEmpty(message="Password is mandatory")
-	@NotBlank(message="Password is mandatory")
+	@NotEmpty(message="Country is mandatory")
+	@NotBlank(message="Country is mandatory")
 	private String country;
 	
 	
