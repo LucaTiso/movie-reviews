@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -95,7 +94,7 @@ public class AuthenticationService {
 
 	@Transactional
 	public AuthenticationResponse authenticate(AuthenticationRequest request) {
-		Authentication auth=authenticationManager
+		authenticationManager
 				.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
 		
 		//var claims = new HashMap<String,Object>();
