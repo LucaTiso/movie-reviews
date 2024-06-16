@@ -2,8 +2,10 @@ package com.luca.moviereviews.webapp.config;
 
 import java.util.Properties;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,6 +20,7 @@ import lombok.RequiredArgsConstructor;
 
 @Configuration
 @RequiredArgsConstructor
+@PropertySource("classpath:secrets.properties")
 public class ApplicationConfig {
 	
 private final UserDetailsService userDetailService;
@@ -41,13 +44,14 @@ private final UserDetailsService userDetailService;
 	}
 	
 	@Bean
-	public JavaMailSender getJavaMailSender() {
+	public JavaMailSender getJavaMailSender(@Value("${myApp.smtp.mail}") String smtpMail,@Value("${myApp.smtp.password}") String smtpPassword) {
 	    JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
 	    mailSender.setHost("smtp.gmail.com");
 	    mailSender.setPort(587);
 	    
-	    mailSender.setUsername("elcharro9511@gmail.com");
-	    mailSender.setPassword("jwowupvkipldetvq");
+	
+	    mailSender.setUsername(smtpMail);
+	    mailSender.setPassword(smtpPassword);
 	    
 	    Properties props = mailSender.getJavaMailProperties();
 	    props.put("mail.transport.protocol", "smtp");

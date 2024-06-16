@@ -61,7 +61,7 @@ public class MetacriticReviewServiceImpl implements MetacriticReviewService {
 				? Sort.by(reviewSearchParams.getSortBy()).descending()
 				: Sort.by(reviewSearchParams.getSortBy()).ascending();
 
-		System.out.println("endpoint raggiunto");
+	
 
 		Specification<MetacriticUserReview> spec = (root, query, cb) -> {
 

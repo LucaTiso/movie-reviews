@@ -68,9 +68,7 @@ public class WebappUserController {
 	@GetMapping(path = "/getProfile")
 	public ResponseEntity<?> getProfile(Principal connectedUser) {
 		
-		System.out.println("principal:");
-		System.out.println(connectedUser);
-
+	
 		UserResponse pResponse=webappUserService.getProfile(connectedUser);
 		ResponseEntity<?> response = new ResponseEntity<>(pResponse, HttpStatus.OK);	
 		return response;
@@ -89,9 +87,8 @@ public class WebappUserController {
 	@DeleteMapping(path = "/favourites")
 	public ResponseEntity<?> deleteFavourite(@RequestBody List<Long> moveIdList) {
 
-		System.out.println("id list: ");
 
-		moveIdList.forEach(System.out::println);
+		
 		webappUserService.removeFromFavourites(moveIdList,"pierpecco");
 
 		return new ResponseEntity<>(null, HttpStatus.OK);

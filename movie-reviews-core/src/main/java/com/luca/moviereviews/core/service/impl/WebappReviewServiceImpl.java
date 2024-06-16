@@ -146,16 +146,14 @@ public class WebappReviewServiceImpl implements WebappReviewService {
 			return cb.and(predicates.toArray(new Predicate[0]));
 		};
 		
-		System.out.println("page number: "+reviewSearchParams.getPageNumber());
-		System.out.println("page number: "+reviewSearchParams.getPageRecords());
-		System.out.println("page number: "+reviewSearchParams.getPageNumber());
+		
 		
 
 		Page<WebappReview> reviewPage = webappReviewRepository.findAll(spec,
 				PageRequest.of(reviewSearchParams.getPageNumber()-1, reviewSearchParams.getPageRecords(), sort));
 		
 		
-		System.out.println(reviewPage.getContent().size());
+		
 
 		List<WebappReviewResponse> reviewList = reviewPage.getContent().stream().map(EntityUtils::entityToDto).toList();
 
@@ -186,7 +184,7 @@ public class WebappReviewServiceImpl implements WebappReviewService {
 			webappReviewRepository.findByMovieAndUsername(movieId,userDetails.getUsername()).ifPresent(r->searchResponse.setReviewId(r.getId()));
 			
 		}catch(Exception e ) {
-			System.out.println("no user logged");
+			
 			e.printStackTrace();
 		}
 		

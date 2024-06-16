@@ -1,0 +1,4 @@
+myApp:
+  smtp:
+    mail: ${SMTP_MAIL}
+    password: ${SMTP_PASSWORD}

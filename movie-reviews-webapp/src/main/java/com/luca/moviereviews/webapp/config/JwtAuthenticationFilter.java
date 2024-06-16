@@ -42,11 +42,10 @@ private final JwtService jwtService;
 		final String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
 		final String jwt;
 		final String username;
-		System.out.println("parte il filtro");
-		
+	
 		// se non c'è il token o non inizia con bearer non continuo con le operazioni del filterChain
 		if(authHeader==null || !authHeader.startsWith("Bearer ")) {
-			System.out.println("Non inizia con bearer");
+			
 			filterChain.doFilter(request, response);
 			return;
 		}
@@ -65,16 +64,14 @@ private final JwtService jwtService;
 		// controllo se username è diverso da null e se l'utente non è già autenticato?
 		if(username!=null && SecurityContextHolder.getContext().getAuthentication()==null) {
 			
-			System.out.println("userEmail not null");
-			System.out.println(username);
+	
 			UserDetails userDetails=this.userDetailsService.loadUserByUsername(username);	
 			
 			
 			if(jwtService.isTokenValid(jwt, userDetails) && userDetails.isAccountNonExpired()) {
 				
 				
-				System.out.println("token valido");
-				System.out.println("username: "+userDetails.getUsername());
+			
 				
 				// questo oggetto sarà utilizzato da spring per aggiornare il SecurityContextHolder
 				UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
@@ -90,7 +87,7 @@ private final JwtService jwtService;
 				
 			}
 		}
-		System.out.println("Fine filtro");
+		
 		filterChain.doFilter(request, response);
 		
 	}

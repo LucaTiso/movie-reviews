@@ -15,7 +15,6 @@ public class MovieReviewsApplication {
 
 		SpringApplication.run(MovieReviewsApplication.class, args);
 
-		System.out.println("miao");
 	}
 
 }

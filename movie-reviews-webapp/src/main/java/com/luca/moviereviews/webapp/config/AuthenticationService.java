@@ -153,10 +153,10 @@ public class AuthenticationService {
 		final String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
 		final String refreshToken;
 		final String username;
-		System.out.println("parte il refresh");
+		
 		
 		if(authHeader==null || !authHeader.startsWith("Bearer ")) {
-			System.out.println("Non inizia con bearer");
+			
 			return;
 		}
 		

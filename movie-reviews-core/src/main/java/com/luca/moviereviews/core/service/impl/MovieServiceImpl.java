@@ -333,7 +333,7 @@ public class MovieServiceImpl implements MovieService {
 			
 			Set<Long> favouritesIds=favourites.stream().map(m->m.getMovie().getId()).collect(Collectors.toSet());
 			
-			System.out.println("preferiti:");
+		
 			
 			favouritesIds.forEach(a->System.out.println(a));
 			

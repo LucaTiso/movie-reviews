@@ -49,10 +49,7 @@ public class MetacriticReviewController {
 			@RequestParam(required=false,name="fromReviewDate") @DateTimeFormat(pattern = "dd/MM/yyyy")LocalDate fromReviewDate,
 			@RequestParam(required=false,name="toReviewDate") @DateTimeFormat(pattern = "dd/MM/yyyy")LocalDate toReviewDate
 			) {
-		
-		System.out.println("raggiunto controller");
-		System.out.println("From review date: "+fromReviewDate);
-		
+	
 				
 		ReviewSearchParams reviewSearchParams=new ReviewSearchParams(pageNumber,itemsPerPage,sortBy,direction);
 		reviewSearchParams.setUsername(username);
@@ -81,7 +78,7 @@ public class MetacriticReviewController {
 			@RequestParam(required=false,name="toReviewDate") @DateTimeFormat(pattern = "dd/MM/yyyy")LocalDate toReviewDate,
 			@RequestParam(required=false,name="title")String title) {
 		
-		System.out.println("raggiunto controller");
+	
 		
 		ReviewSearchParams reviewSearchParams=new ReviewSearchParams(pageNumber,itemsPerPage,sortBy,direction);
 		reviewSearchParams.setUsername(username);

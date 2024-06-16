@@ -56,10 +56,7 @@ public class WebappReviewController {
 	@GetMapping(path="/webapp/reviews/{reviewId}")
 	public ResponseEntity<WebappReviewResponse> getReview(@PathVariable Long reviewId) {
 		
-		System.out.println("user: ");
-		
-		//UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		//System.out.println(userDetails.getUsername());
+	
 		
 		WebappReviewResponse reviewResponse=webappReviewService.getReview(0l, reviewId);
 		ResponseEntity<WebappReviewResponse> response=new ResponseEntity<>(reviewResponse,HttpStatus.OK);
